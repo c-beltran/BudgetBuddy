@@ -7,7 +7,6 @@ var saverSchema = new mongoose.Schema({
 	currBudget: Number
 });
 
-
 //compile into a model and save to a variable
 //we can use this variable 'Saver' throughout
 //the rest of the project.
