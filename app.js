@@ -10,6 +10,7 @@ var Saver = require("./models/saverModel")
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //CONNECTING DBS
 mongoose.connect("mongodb://localhost/budget_buddy", {
