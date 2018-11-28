@@ -4,32 +4,22 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+//requiring the DB model
+var Saver = require("./models/saverModel")
 
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 //CONNECTING DBS
 mongoose.connect("mongodb://localhost/budget_buddy", {
 	useNewUrlParser: true
 });
 
-//defining schema
-var saverSchema = new mongoose.Schema({
-	name: String,
-	email: String,
-	currBudget: Number
-});
-
-
-//compile into a model and save to a variable
-//we can use this variable 'Saver' throughout
-//the rest of the project.
-var Saver = mongoose.model("Saver", saverSchema);
-
-//adding a new member to db
+//adding a new member to db 
 // Saver.create({
-// 	name: "Carlos",
-// 	email: "Carlos@budgetbuddy.com",
+// 	name: "TEST",
+// 	email: "TEST@budgetbuddy.com",
 // 	currBudget: 1000
 // }, function(err, saver){
 // 	if(err){
@@ -40,8 +30,8 @@ var Saver = mongoose.model("Saver", saverSchema);
 // });
 
 //requiring ROUTES
-const tutoringCenterRoutes = require("./routes/budgetbuddyRoutes");
-app.use(tutoringCenterRoutes);
+var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
+app.use(budgetbuddyRoutes);
 
 //this starts up our node server
 app.listen(3000, function() {

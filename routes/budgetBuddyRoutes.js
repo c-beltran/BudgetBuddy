@@ -7,7 +7,8 @@ router.get('/', function(req, res){
 });
 
 router.get('/bubgetbuddy', function(req, res){
-	res.send("This is the Homepage");
+	// res.send("This is the Homepage");
+	res.render('homepage')
 });
 
 //all other pages end up here
