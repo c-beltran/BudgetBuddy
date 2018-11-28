@@ -1,39 +1,31 @@
+//required npm packages needed in order to develop application
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var mysql = require('mysql');
+var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 
-//create a connectio with DB
-var db = mysql.createConnection({
-	host     : 'localhost',
-  	user     : 'root',
-  	password : '',
-  	// database : 'my_db'
-});
+//this is our templating language which allows us to use JS in html
+app.set("view engine", "ejs");
 
-//connect
-db.connect(function(err){
-	if(err){
-		console.log(err);
-	}else{
-		console.log("mysql db is connected");
-	}
-});
+//defining schema
 
-//route to create db table
-// app.get('/createdb', function(req, res){
-// 	var sqlDatabase = 'CREATE DATABE budgetApp';
-// 	db.query(sqlDatabase, function(err, result){
-// 		if(err){
-// 			console.log(err);
-// 		}else{
-// 			console.log(result); //this prints the db structure
-// 			res.send('Database Created Successfully!'); //you should see this message in your local browser localhost/3000/createdb
-// 		}
-// 	});
 
+//compile into a model and save to a variable
+//we can use this veriable to use it throughout
+//the rest of the project.
+
+//adding a new member to db Cat{ : }
+
+//save to db
+//george.save(Callback func);
+
+//does the job of creating and save
+// Cat.create({
+// 	name: "snow",...
+// }, function(err, result){
+// 	if(err){
+// 		console.log(err);
+// 	}
+// 	console.log(result);
 // });
-
-app.listen(3000, function() {
-	console.log("SERVER LISTENING ON PORT 3000 ... ");
-})
