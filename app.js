@@ -18,18 +18,20 @@ mongoose.connect("mongodb://localhost/budget_buddy", {
 });
 
 //adding a new member to db 
-// Saver.create({
-// 	name: "TEST",
-// 	email: "TEST@budgetbuddy.com",
-// 	currBudget: 1000
-// }, function(err, saver){
-// 	if(err){
-// 		console.log("Error creating a saver: ", err);
-// 	}
-// 	console.log("Successfully created a saver!");
-// 	console.log(saver);
-// });
-
+/* Saver.create({
+	firstName: "TEST",
+	lastName: "123", 
+	email: "TEST@budgetbuddy.com",
+	password: "password123", 
+ 	account :{ currBudget: 1000}
+ }, function(err, saver){
+ 	if(err){
+ 		console.log("Error creating a saver: ", err);
+ 	}
+ 	console.log("Successfully created a saver!");
+ 	console.log(saver);
+});
+*/
 //requiring ROUTES
 var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
 app.use(budgetbuddyRoutes);
