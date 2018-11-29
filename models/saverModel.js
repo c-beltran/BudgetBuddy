@@ -2,9 +2,14 @@ var mongoose = require("mongoose");
 
 //defining schema
 var saverSchema = new mongoose.Schema({
-	name: String,
+	firstName: String,
+	lastName: String,
 	email: String,
-	currBudget: Number
+	password: String,
+	account: {
+		//will this create a separate ID for it?
+		currBudget: Number
+	}
 });
 
 //compile into a model and save to a variable
