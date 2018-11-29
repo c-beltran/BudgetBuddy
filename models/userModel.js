@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
 });
 
 //compile into a model and save to a variable
-//we can use this variable 'Saver' throughout
+//we can use this variable 'User' throughout
 //the rest of the project.
 var User = mongoose.model("User", userSchema);
 
