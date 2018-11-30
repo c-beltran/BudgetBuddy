@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 //requiring the DB model
-var Saver = require("./models/saverModel")
+var User = require("./models/userModel")
 
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
@@ -18,18 +18,20 @@ mongoose.connect("mongodb://localhost/budget_buddy", {
 });
 
 //adding a new member to db 
-// Saver.create({
-// 	name: "TEST",
-// 	email: "TEST@budgetbuddy.com",
-// 	currBudget: 1000
-// }, function(err, saver){
-// 	if(err){
-// 		console.log("Error creating a saver: ", err);
-// 	}
-// 	console.log("Successfully created a saver!");
-// 	console.log(saver);
-// });
-
+/* User.create({
+	firstName: "TEST",
+	lastName: "123", 
+	email: "TEST@budgetbuddy.com",
+	password: "password123", 
+ 	account :{ currBudget: 1000}
+ }, function(err, user){
+ 	if(err){
+ 		console.log("Error creating a user: ", err);
+ 	}
+ 	console.log("Successfully created a user!");
+ 	console.log(user);
+});
+*/
 //requiring ROUTES
 var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
 app.use(budgetbuddyRoutes);
