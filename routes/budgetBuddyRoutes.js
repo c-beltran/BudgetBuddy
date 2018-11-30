@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router(); //this allow us to use 'router' to create our routes for the app.
 //requiring the DB model
-var Saver = require("../models/saverModel")
+var Saver = require("../models/userModel")
 
 //this is the root route which will redirect to the Homepage
 router.get('/', function(req, res){
