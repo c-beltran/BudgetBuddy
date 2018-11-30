@@ -5,10 +5,10 @@ var User = require("../models/userModel")
 
 //this is the root route which will redirect to the Homepage
 router.get('/', function(req, res){
-	res.redirect('/bubgetbuddy');
+	res.redirect('/budgetbuddy');
 });
 
-router.get('/bubgetbuddy', function(req, res){
+router.get('/budgetbuddy', function(req, res){
 	// res.send("This is the Homepage");
 	
 	//this code searches through the DB and gives back all users info
@@ -21,15 +21,15 @@ router.get('/bubgetbuddy', function(req, res){
 	});
 });
 
-router.get('/bubgetbuddy/sign_in', function(req, res){
+router.get('/budgetbuddy/sign_in', function(req, res){
 	res.send("This is the Login Page");
 });
 
-router.get('/bubgetbuddy/sign_up', function(req, res){
+router.get('/budgetbuddy/sign_up', function(req, res){
 	res.send("This is the Sign Up Page");
 });
 
-router.get('/bubgetbuddy/home', function(req, res){
+router.get('/budgetbuddy/home', function(req, res){
 	res.send("This is the user main page");
 });
 
