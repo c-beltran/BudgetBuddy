@@ -18,20 +18,20 @@ mongoose.connect("mongodb://localhost/budget_buddy", {
 });
 
 //adding a new member to db 
-/* User.create({
-	firstName: "TEST",
-	lastName: "123", 
-	email: "TEST@budgetbuddy.com",
-	password: "password123", 
- 	account :{ currBudget: 1000}
- }, function(err, user){
- 	if(err){
- 		console.log("Error creating a user: ", err);
- 	}
- 	console.log("Successfully created a user!");
- 	console.log(user);
-});
-*/
+//  User.create({
+// 	firstName: "user3",
+// 	lastName: "123", 
+// 	email: "TEST@budgetbuddy.com",
+// 	password: "password123", 
+//  	account :{ currBudget: 1000}
+//  }, function(err, user){
+//  	if(err){
+//  		console.log("Error creating a user: ", err);
+//  	}
+//  	console.log("Successfully created a user!");
+//  	console.log(user);
+// });
+
 //requiring ROUTES
 var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
 app.use(budgetbuddyRoutes);
