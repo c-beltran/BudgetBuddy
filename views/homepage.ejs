@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Budget Buddy</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/hompage.css">
+</head>
+<body>
+	<h1>This is the landing page :)</h1>
+	<%result.forEach(function(user){%>
+		<p>Name: <%= user.firstName %></p>
+		<p>Email: <%= user.email%></p>
+		<p>Current Budget: $<%= user['account'].currBudget%></p>
+	<%});%>
+	<script type="text/javascript" src="homepage.js"></script>
+</body>
+</html>
