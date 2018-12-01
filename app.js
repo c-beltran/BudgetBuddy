@@ -5,7 +5,11 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 //requiring the DB model
-var User = require("./models/userModel")
+var User = require("./models/userModel");
+
+//db variables
+var env = process.env.NODE_ENV || 'dev';
+var dbURI = (env == 'dev')? 'mongodb://localhost/budget_buddy' : process.env.MONGODB_URI;
 
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
@@ -13,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 //CONNECTING DBS
-mongoose.connect("mongodb://localhost/budget_buddy", {
+mongoose.connect(dbURI, {
 	useNewUrlParser: true
 });
 
@@ -33,10 +37,10 @@ mongoose.connect("mongodb://localhost/budget_buddy", {
 // });
 
 //requiring ROUTES
-var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
-app.use(budgetbuddyRoutes);
+var budgetbuddyRoutes = require("./routes/routes.js");
+app.use('/', budgetbuddyRoutes);
 
 //this starts up our node server
-app.listen(3000, function() {
-	console.log("STARTED BUDGET BUDDY APP ON PORT 3000");
+app.listen(process.env.PORT || 8000, function() {
+	console.log("STARTED BUDGET BUDDY APP ON PORT 8000");
 });
