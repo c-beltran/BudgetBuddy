@@ -37,7 +37,7 @@ mongoose.connect(dbURI, {
 // });
 
 //requiring ROUTES
-var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
+var budgetbuddyRoutes = require("./routes/routes.js");
 app.use('/', budgetbuddyRoutes);
 
 //this starts up our node server
