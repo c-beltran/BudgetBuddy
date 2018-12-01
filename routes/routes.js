@@ -22,7 +22,7 @@ router.get('/budgetbuddy', function(req, res){
 });
 
 router.get('/budgetbuddy/sign_in', function(req, res){
-	res.send("This is the Login Page");
+	res.render("login");
 });
 
 router.get('/budgetbuddy/sign_up', function(req, res){
