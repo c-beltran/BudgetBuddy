@@ -1,8 +1,12 @@
 var mongoose = require("mongoose");
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var goalSchema = new mongoose.Schema({
-	description: String
+	user_id: ObjectId,
+	description: String,
+	date: Date,
+	amount: Number
 });
 
 //compile into a model and save to a variable

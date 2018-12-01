@@ -1,8 +1,10 @@
 var mongoose = require("mongoose");
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var expenseSchema = new mongoose.Schema({
-	item: String,
+    user_id: ObjectId,
+    item: String,
 	price: Number,
     dateOfPurchase: Date,
     category: String
