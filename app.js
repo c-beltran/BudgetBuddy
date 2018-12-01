@@ -5,7 +5,11 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 //requiring the DB model
-var User = require("./models/userModel")
+var User = require("./models/userModel");
+
+//db variables
+var env = process.env.NODE_ENV || 'dev';
+var dbURI = (env == 'dev')? 'mongodb://localhost/budget_buddy' : process.env.MONGODB_URI;
 
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
@@ -13,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 //CONNECTING DBS
-mongoose.connect("mongodb://localhost/budget_buddy", {
+mongoose.connect(dbURI, {
 	useNewUrlParser: true
 });
 
