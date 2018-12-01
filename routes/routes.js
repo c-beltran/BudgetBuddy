@@ -30,7 +30,7 @@ router.get('/budgetbuddy/sign_up', function(req, res){
 });
 
 router.get('/budgetbuddy/home', function(req, res){
-	res.send("This is the user main page");
+	res.render('home');
 });
 
 //all other pages end up here
