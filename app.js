@@ -41,6 +41,6 @@ var budgetbuddyRoutes = require("./routes/budgetbuddyRoutes");
 app.use(budgetbuddyRoutes);
 
 //this starts up our node server
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
 	console.log("STARTED BUDGET BUDDY APP ON PORT 3000");
 });
