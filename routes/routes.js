@@ -16,7 +16,7 @@ router.get('/budgetbuddy', function(req, res){
 		if(err){
 			console.log("Failed to find all users.. ", err);
 		}else{	//the first result can be named anything, the second is the one
-			res.render('homepage', {result: result});
+			res.render('sample', {result: result});
 		}
 	});
 });
