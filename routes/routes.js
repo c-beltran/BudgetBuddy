@@ -29,7 +29,7 @@ router.get('/budgetbuddy/sign_in', function(req, res){
 });
 
 router.get('/budgetbuddy/sign_up', function(req, res){
-	res.send("This is the Sign Up Page");
+	res.render("signup");
 });
 
 router.get('/budgetbuddy/home', function(req, res){
