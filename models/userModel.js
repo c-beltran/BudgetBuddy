@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var userSchema = new mongoose.Schema({
@@ -8,7 +9,14 @@ var userSchema = new mongoose.Schema({
 	password: String,
 	account: {
 		currBudget: Number
-	}
+	},
+	expenses: [{
+		ref: "Expense"
+	}],
+	goals:[{
+		ref:"Goal"
+	}]
+
 });
 
 //compile into a model and save to a variable
