@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router(); //this allow us to use 'router' to create our routes for the app.
 //requiring the DB model
-var User = require("../models/userModel")
+var User = require("../models/userModel");
+var bodyParser = require("body-parser");
+
+
 
 //this is the root route which will redirect to the Homepage
 router.get('/', function(req, res){
@@ -38,5 +41,16 @@ router.get("*", function(req, res) {
 	res.send("UNABLE TO FIND THIS ROUTE, SORRY :(");
 });
 
+/*
+router.post('/budgetbuddy/sign_in', function(req, res){
+	
+});
+
+router.post('/budgetbuddy/sign_up', function(req, res){
+});
+
+router.post('/budgetbuddy/home', function(req, res){
+});
+*/
 //export file
 module.exports = router;
