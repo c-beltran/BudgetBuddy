@@ -7,7 +7,7 @@ var methodOverride = require("method-override");
 //requiring the DB model
 var User = require("./models/userModel");
 
-//db variables
+//db variables, heroku environment variables
 var env = process.env.NODE_ENV || 'dev';
 var dbURI = (env == 'dev')? 'mongodb://localhost/budget_buddy' : process.env.MONGODB_URI;
 
