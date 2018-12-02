@@ -6,6 +6,8 @@ var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 //requiring the DB model
 var User = require("./models/userModel");
+var Expenses = require("./models/expenseModel");
+var Goals = require("./models/goalModel");
 
 //db variables, heroku environment variables
 var env = process.env.NODE_ENV || 'dev';
@@ -21,9 +23,10 @@ mongoose.connect(dbURI, {
 	useNewUrlParser: true
 });
 
-//adding a new member to db 
+//********* UNCOMMENT THE BELOW CODE IF YOU LIKE TO ADD A USER TO DB **************
+//adding a new user to db 
 //  User.create({
-// 	firstName: "user3",
+// 	firstName: "TEST User",
 // 	lastName: "123", 
 // 	email: "TEST@budgetbuddy.com",
 // 	password: "password123", 
@@ -31,9 +34,38 @@ mongoose.connect(dbURI, {
 //  }, function(err, user){
 //  	if(err){
 //  		console.log("Error creating a user: ", err);
+//  	}else{
+//  		console.log("Successfully created a user!");
+//  		console.log(user);
+//  		Expenses.create({
+//  			user_id: user._id,
+// 		    item: "New Iphone X",
+// 			price: 1100,
+// 		    dateOfPurchase: "12/1/2018",
+// 		    category: "Utility"
+//  		}, function(err, exp){
+//  			if(err){
+//  				console.log("expenses err " + err);
+//  			}else{
+//  				console.log("Expense created! " + exp);
+//  				Goals.create({
+//  					user_id: user._id,
+// 					description: "Save for Christmas shoppping",
+// 					date: "12/20/2018",
+// 					amount: 200
+//  				}, function(err, goal){
+//  					if(err){
+//  						console.log("goal error " + err);
+//  					}else{
+//  						user.goals.push(goal);
+//  						user.expenses.push(exp);
+//  						console.log("goal created!" + goal)
+//  						user.save();
+//  					}
+//  				});
+//  			}
+//  		});
 //  	}
-//  	console.log("Successfully created a user!");
-//  	console.log(user);
 // });
 
 //requiring ROUTES

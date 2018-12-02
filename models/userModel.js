@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var userSchema = new mongoose.Schema({
@@ -11,10 +10,12 @@ var userSchema = new mongoose.Schema({
 		currBudget: Number
 	},
 	expenses: [{
+		type: mongoose.Schema.Types.ObjectId,
 		ref: "Expense"
 	}],
 	goals:[{
-		ref:"Goal"
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Goal"
 	}]
 
 });

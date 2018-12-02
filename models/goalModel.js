@@ -3,9 +3,9 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var goalSchema = new mongoose.Schema({
-	user_id: ObjectId,
+	user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 	description: String,
-	date: Date,
+	date: String,
 	amount: Number
 });
 

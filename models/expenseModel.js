@@ -3,10 +3,10 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //defining schema
 var expenseSchema = new mongoose.Schema({
-    user_id: ObjectId,
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     item: String,
 	price: Number,
-    dateOfPurchase: Date,
+    dateOfPurchase: String,
     category: String
 });
 
