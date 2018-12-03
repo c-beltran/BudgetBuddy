@@ -10,14 +10,16 @@ var userSchema = new mongoose.Schema({
 		currBudget: Number
 	},
 	expenses: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Expense"
+		item: String,
+		price: Number,
+    	dateOfPurchase: String,
+    	category: String
 	}],
 	goals:[{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Goal"
+		description: String,
+		date: String,
+		amount: Number
 	}]
-
 });
 
 //compile into a model and save to a variable

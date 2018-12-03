@@ -25,49 +25,29 @@ mongoose.connect(dbURI, {
 
 //********* UNCOMMENT THE BELOW CODE IF YOU LIKE TO ADD A USER TO DB **************
 //adding a new user to db 
-//  User.create({
-// 	firstName: "TEST User",
-// 	lastName: "123", 
-// 	email: "TEST@budgetbuddy.com",
-// 	password: "password123", 
-//  	account :{ currBudget: 1000}
-//  }, function(err, user){
-//  	if(err){
-//  		console.log("Error creating a user: ", err);
-//  	}else{
-//  		console.log("Successfully created a user!");
-//  		console.log(user);
-//  		Expenses.create({
-//  			user_id: user._id,
-// 		    item: "New Iphone X",
-// 			price: 1100,
-// 		    dateOfPurchase: "12/1/2018",
-// 		    category: "Utility"
-//  		}, function(err, exp){
-//  			if(err){
-//  				console.log("expenses err " + err);
-//  			}else{
-//  				console.log("Expense created! " + exp);
-//  				Goals.create({
-//  					user_id: user._id,
-// 					description: "Save for Christmas shoppping",
-// 					date: "12/20/2018",
-// 					amount: 200
-//  				}, function(err, goal){
-//  					if(err){
-//  						console.log("goal error " + err);
-//  					}else{
-//  						user.goals.push(goal);
-//  						user.expenses.push(exp);
-//  						console.log("goal created!" + goal)
-//  						user.save();
-//  					}
-//  				});
-//  			}
-//  		});
-//  	}
-// });
-
+/*User.create({
+ 	firstName: "C",
+ 	lastName: "User", 
+ 	email: "userC@budgetbuddy.com",
+ 	password: "password123", 
+	account :{ currBudget: 500},
+	expenses :[ {item: "New Iphone X",
+				price: 1100,
+				dateOfPurchase: "12/1/2018",
+				category: "Utility"},
+				{item: "Grocery",
+				price: 100,
+				dateOfPurchase: "12/15/2018",
+				category: "Food"
+		}],
+	goals :	[{ description: "Save for Christmas shoppping",
+				date: "12/20/2018",
+				amount: 200 },
+			{ description: "Save to buy a car",
+				date: "10/05/2019",
+				amount: 20000 }]
+	});
+*/
 //requiring ROUTES
 var budgetbuddyRoutes = require("./routes/routes.js");
 app.use('/', budgetbuddyRoutes);
