@@ -1,12 +1,43 @@
 body {
-	background: whitesmoke;
+	background: #e2ecff;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
   }
-  
+
+img {
+	text-align: center;
+}
+
+p {
+	font-size: 80%;
+}
+
+input {
+	background: rgb(210, 233, 247);
+	padding: 5px;
+	border-radius: 3px;
+	border: none;
+	width: 100%;
+	line-height: 150%;
+	font-size: 100%;
+	color: lightslategray;
+}
+input:focus {
+	border: 3px, black;
+	background: rgb(170, 219, 250);
+	color: black;
+}
+
+#banner {
+	font-size: 100%;
+	color: whitesmoke;
+}
+
 .topnav {
 	overflow: hidden;
-	background-color: lightseagreen;
+	background-color: #027878;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .topnav a {
@@ -15,7 +46,7 @@ body {
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 100%;
 }
 
 .topnav a:hover {
@@ -24,48 +55,41 @@ body {
 }
 
 .topnav a.active {
-	background-color: lightskyblue;
+	background-color: #2a91fc;
 	color: white;
 }
 
-div form {
-	width: 50%;
+#form {
+	width: 60%;
     height: 50%;
-	border-radius: 50px;
-	background: lightslategray;
+	border-radius: 25px;
+	background: whitesmoke;
 
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
+    position: relative;
     margin: auto;
-	padding-top: 10%;
+	padding-top: 3%;
     padding-left: 10%;
     padding-right: 10%;
-	padding-bottom: 10%;
-	
+	padding-bottom: 7%;
+
+	font-size: 100%;
+}
+
+#submit {
+	background-color: #2a91fc;
+	color: whitesmoke;
+}
+#fineprint {
+	font-size: 80%;
 	text-align: center;
-	font-size: 200%;
-}
-
-input {
-	padding: 5px;
-	border-radius: 10px;
-	font-size: 20px;
-	line-height: 35px;
-}
-
-p {
-	font-size: 18px;
 }
 
 .footer {
-	position: absolute;
+	position: relative;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: lightseagreen;
+	background-color: #027878;
 	text-align: center;
+	color: whitesmoke;
   }
