@@ -4,6 +4,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+//var formidable =  require('express-formidable'); //allow for form data (bodyparser does not account for this)
+
 //requiring the DB model
 var User = require("./models/userModel");
 var Expenses = require("./models/expenseModel");
@@ -17,6 +19,7 @@ var dbURI = (env == 'dev')? 'mongodb://localhost/budget_buddy' : process.env.MON
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+//app.use(formidable());
 
 //CONNECTING DBS
 mongoose.connect(dbURI, {
