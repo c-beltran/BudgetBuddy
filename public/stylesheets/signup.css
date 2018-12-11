@@ -1,27 +1,19 @@
 body {
 	background: #e2ecff;
-	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
   }
 
-#logo {
-	text-align: center;
-}
-
 input {
 	background: rgb(210, 233, 247);
-	padding: 5px;
+	padding: 10px;
 	border-radius: 3px;
 	border: none;
 	width: 100%;
 	line-height: 150%;
-	font-size: 100%;
 	color: lightslategray;
 }
 
 input:focus {
-	border: 3px, black;
-	background: rgb(170, 219, 250);
 	color: black;
 }
 
@@ -44,7 +36,7 @@ input:focus {
 
 .topnav a {
 	float: right;
-	color: #f2f2f2;
+	color: whitesmoke;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -52,17 +44,17 @@ input:focus {
 }
 
 .topnav a:hover {
-	background-color: #ddd;
+	background-color: whitesmoke;
 	color: black;
 }
 
 .topnav a.active {
 	background-color: #2a91fc;
-	color: white;
+	color: whitesmoke;
 }
 
 #form {
-	width: 60%;
+	width: 80%;
     height: 50%;
 	border-radius: 25px;
 	background: whitesmoke;
@@ -73,25 +65,19 @@ input:focus {
     padding-left: 10%;
     padding-right: 10%;
 	padding-bottom: 7%;
-
-	font-size: 100%;
 }
 
 #submit {
 	background-color: #2a91fc;
 	color: whitesmoke;
 }
+
 #fineprint {
 	font-size: 80%;
-	text-align: center;
 }
 
 .footer {
 	position: relative;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	background-color: #027878;
-	text-align: center;
 	color: whitesmoke;
 }
