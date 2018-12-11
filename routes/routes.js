@@ -10,15 +10,8 @@ router.get('/', function(req, res){
 
 router.get('/budgetbuddy', function(req, res){
 	// res.send("This is the Homepage");
+	res.render("homepage");
 	
-	//this code searches through the DB and gives back all users info
-	User.find({}, function(err, result){
-		if(err){
-			console.log("Failed to find all users.. ", err);
-		}else{	//the first result can be named anything, the second is the one
-			res.render('homepage', {result: result});
-		}
-	});
 });
 
 router.get('/budgetbuddy/sign_in', function(req, res){
@@ -33,13 +26,7 @@ router.get('/budgetbuddy/home', function(req, res){
 	res.render('home');
 });
 
-//all other pages end up here
-router.get("*", function(req, res) {
-	res.send("UNABLE TO FIND THIS ROUTE, SORRY :(");
-});
-
-
-router.post('/budgetbuddy/sign_in', function(req, res){
+router.post('/budgetbuddy/sign_in/user', function(req, res){
 	//search if user exists in database
 	User.find({$and: [{ email: req.body.email , password: req.body.password}]}, function (err, docs){
 		if(err) console.log ("Error");
@@ -52,7 +39,7 @@ router.post('/budgetbuddy/sign_in', function(req, res){
 	})
 });
 
-router.post('/budgetbuddy/sign_up', function(req, res){
+router.post('/budgetbuddy/sign_up/user', function(req, res){
 		//search database for email
 		User.find({email: req.body.email},function (err,docs){
 			//if there is an account with this email output it already exists, else create new user and direct to login page
@@ -68,6 +55,24 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 			}
 		});
 });
+
+//all other pages end up here
+router.get("*", function(req, res) {
+	res.send("UNABLE TO FIND THIS ROUTE, SORRY :(");
+});
+
+/*============SAMPLE ROUTE================*/
+router.get('/budgetbuddy/sample', function(req, res){
+	//this code searches through the DB and gives back all users info
+	User.find({}, function(err, result){
+	if(err){
+		console.log("Failed to find all users.. ", err);
+		}else{	//the first result can be named anything, the second is the one
+			res.render('sample', {result: result});
+		}
+	});
+});
+
 /*
 router.post('/budgetbuddy/home', function(req, res){
 });

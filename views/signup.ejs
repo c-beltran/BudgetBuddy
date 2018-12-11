@@ -37,22 +37,22 @@
 	<!-- sign up form -->
 	<div id="form" class="container-fluid">
 		<h1 class="text-center">Sign Up</h1>
-		<form id="sign up" method='POST' action='/budgetbuddy/sign_up'>
+		<form id="sign up" method='POST' action='/budgetbuddy/sign_up/user'>
 			<div class="form-group">
 				<label>First Name:</label>
-				<input type="text" onfocus="this.value=''" name="firstname" value="Enter your first name.">
+				<input type="text" onfocus="this.value=''" name="firstname" value="Enter your first name." required>
 			</div>
 			<div class="form-group">
 				<label>Last Name:</label>
-				<input type="text" onfocus="this.value=''" name="lastname" value="Enter your last name.">
+				<input type="text" onfocus="this.value=''" name="lastname" value="Enter your last name." required>
 			</div>
 			<div class="form-group">
 				<label>Email:</label>
-				<input type="email" onfocus="this.value=''" name="email" value="Enter your Email.">
+				<input type="email" onfocus="this.value=''" name="email" value="Enter your Email." required>
 			</div>
 			<div class="form-group">
 				<label>Password:</label>
-				<input type="password" onfocus="this.value=''" name="password" value="Enter your password.">
+				<input type="password" onfocus="this.value=''" name="password" value="Enter your password." required>
 			</div>
 			<div class="form-group">
 				<input type="submit" onmouseover="this.value='Submit'" onmouseout="this.value='Done'" value="Done" id="submit">
