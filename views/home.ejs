@@ -3,40 +3,156 @@
 <head>
 	<title>Budget Buddy</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-<body>
+
+<body style="background-color: #E2ECFF;">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-green">
+    <div class="container">
+        <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
+  
+        <a class="navbar-brand" href="/"> Welcome {username} </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navBar">
+           <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                 <a class="nav-link" href="/budgetbuddy/sign_in">Settings</a>
+              </li>
+
+            </ul>
+         </div>
+      </div>
+  </nav>
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">BudgetBuddy</a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-    </ul>
-  </div>
-</nav>
 
 <div class="container-fluid">
 
 	<div class="container">
     <div class="row">
-        <div class="col-xs-6" id="left">
-            TOTAL BUDGET:
+        <div class="col-md-4 offset-md-1" id="left">
+            <br><h4>Total Budget:</h4>
         </div>
-        <div class="col-xs-6" id="right">
-            CURRENT BUDGET:
+        <div class="col-sm-4 offset-md-2" id="left">
+            <br><h4>Current Budget:</h4>
         </div>
     </div>
-</div>
+    <br>
 
+    <div class="row">
+      <div class="col-xs-1 offset-sm-5" id="button">
+        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')" >Expenses</button>
+      </div>
+      <div class="col-xs-1" id="button">
+        <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" id="defaultOpen">Goals</button>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class="col-md-4" id="bar">
+        <ul class="vertical">
+          <li> Today's Date: </li>
+          <li> Current Budget: </li>
+          <br>
+          <li> Total Expense Entries: </li>
+          <li> Total Amount of Expenses: </li>
+          <br>
+          <li> Total Goals Created: </li>
+          <li> Total Goals Completed: </li>
+        </ul>
+      </div>
+
+      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
+              <br>
+        <h3> Expenses </h3>
+        <br>
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
+          </div>
+          <div class="form-group">
+            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
+          </div>
+          <div class="form-group">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+          </div>
+           <button type="submit" class="btn btn-primary mb-2">Add</button>
+      </form>   
+      <br>
+      <table>
+        <tr>
+
+          <th> Description </th>
+          <th> Amount </th>
+          <th> Due Date </th>
+        </tr>
+        <tr>
+          <td> Description </td>
+          <td> Amount </td>
+          <td> Due Date </td>
+        </tr>
+         <tr>
+          <td> Description </td>
+          <td> Amount </td>
+          <td> Due Date </td>
+        </tr>
+      </table>
+      </div>
+        
+    
+
+      <div class="col-md-7 offset-md-1 tabcontent" id="Goals" style="border-color: green; border-style: solid; border-width: 1px">
+        <br>
+        <h3> Goals </h3>
+        <br>
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
+          </div>
+          <div class="form-group">
+            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
+          </div>
+          <div class="form-group">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+          </div>
+           <button type="submit" class="btn btn-primary mb-2">Add</button>
+      </form>   
+      <br>
+      <table>
+        <tr>
+          <th>  </th>
+          <th> Description </th>
+          <th> Amount </th>
+          <th> Due Date </th>
+        </tr>
+        <tr>
+          <td> </td>
+          <td> Description </td>
+          <td> Amount </td>
+          <td> Due Date </td>
+        </tr>
+         <tr>
+          <td></td>
+          <td> Description </td>
+          <td> Amount </td>
+          <td> Due Date </td>
+        </tr>
+      </table>
+      </div>
+</div>
 
 	</div>
 
 
 
 	<script type="text/javascript" src="/js/home.js"></script>
+
+
 </body>
 </html>
