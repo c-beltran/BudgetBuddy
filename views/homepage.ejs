@@ -1,16 +1,177 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Budget Buddy</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/hompage.css">
-</head>
-<body>
-	<h1>This is the landing page :)</h1>
-	<%result.forEach(function(user){%>
-		<p>Name: <%= user.firstName %></p>
-		<p>Email: <%= user.email%></p>
-		<p>Current Budget: $<%= user['account'].currBudget%></p>
-	<%});%>
-	<script type="text/javascript" src="homepage.js"></script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/homepage.css">
+
+    <title>Budget Buddy</title>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-green">
+    <div class="container">
+        <a class="navbar-brand" href="#">Budget Buddy </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navBar">
+           <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                 <a class="nav-link" href="#">Log In</a>
+              </li>
+              <li class="nav-item active">
+                 <a class="nav-link" href="#">Sign Up <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+         </div>
+      </div>
+  </nav>
+
+  <main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="row">
+           <div class="col-7">
+             <h2 class="title">Let us do the hard work for you</h1>
+             <p>It's not easy to keep track of all the expances, specially now with the holiday season arriving. That is why we would like to help you manage what comes out of your pocket better.</p>
+             <p><a class="btn btn-primary btn-lg get-started" href="#" role="button">Get Started</a></p>
+           </div>
+           <div class="col-5"><img src="images/WalletLogo.png" alt="WalletLogo" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container howItworks">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="serviceIcon">
+             <img src="images/service_icon_1.png" alt="services" />
+          </div>
+          <div class="serviceTitle">
+             <h3>Keep Trach of Expences</h3>
+          </div>
+          <div class="serviceText">
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="serviceIcon">
+             <img src="images/service_icon_2.png" alt="services" />
+          </div>
+          <div class="serviceTitle">
+             <h3>Set Financial Goals</h3>
+          </div>
+          <div class="serviceText">
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="serviceIcon">
+             <img src="images/service_icon_3.png" alt="services" />
+          </div>
+          <div class="serviceTitle">
+             <h3>Look at Your History</h3>
+          </div>
+          <div class="serviceText">
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="serviceIcon">
+             <img src="images/service_icon_4.png" alt="services" />
+          </div>
+          <div class="serviceTitle">
+             <h3>Easy to Use</h3>
+          </div>
+          <div class="serviceText">
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+  </main>
+
+  <footer>
+    <div class="container">
+       <div class="row justify-content-md-center">
+            <div class="col-md-3">
+                <h4>GET TO KNOW US</h4>
+                <ul class="list-unstyled">
+                   <li>
+                     <a href="#">About Us</a>
+                   </li>
+                   <li>
+                     <a href="#">Our Team</a>
+                   </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>WHAT WE OFFER</h4>
+                <ul class="list-unstyled">
+                   <li>
+                     <a href="#">Easy to use application</a>
+                   </li>
+                   <li>
+                     <a href="#">Expence tracking system</a>
+                   </li>
+                   <li>
+                     <a href="#">Goal setting feature</a>
+                   </li>
+                   <li>
+                     <a href="#">History Feature</a>
+                   </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h4>RESOURCES</h4>
+                <ul class="list-unstyled">
+                   <li>
+                     <a href="#">Save Smarter</a>
+                   </li>
+                   <li>
+                     <a href="#">Spend smarter</a>
+                   </li>
+                   <li>
+                     <a href="#">Look for coupons</a>
+                   </li>
+                   <li>
+                     <a href="#">Online deals</a>
+                   </li>
+                </ul>
+            </div>
+       </div>
+       <div class="row justify-content-md-center socialIcons">
+            <a href="#"><img src="images/fb.png" alt="Facebook" /></a>
+            <a href="#"><img src="images/Fc.png" alt="Social" /></a>
+            <a href="#"><img src="images/insta.png" alt="Instagram" /></a>
+            <a href="#"><img src="images/tw.png" alt="Twitter" /></a>
+            <a href="#"><img src="images/in.png" alt="LinkedIn" /></a>
+       </div>
+       <div class="row justify-content-md-center socialIcons">
+            <p>Budget Buddy 2018. All rights reserved.</p>
+       </div>
+    </div>
+  </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>
