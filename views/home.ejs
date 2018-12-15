@@ -3,45 +3,57 @@
 <head>
 	<title>Budget Buddy</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- JS & Jquery for bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: #E2ECFF;">
 
-<nav class="navbar navbar-expand-md navbar-dark bg-green">
+  <nav class="navbar navbar-expand-md navbar-dark bg-green">
     <div class="container">
-        <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
-  
-        <a class="navbar-brand" href="/"> Welcome {username} </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-        </button>
+      <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-        <div class="collapse navbar-collapse" id="navBar">
-           <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                 <a class="nav-link" href="/budgetbuddy/sign_in">Settings</a>
-              </li>
+      <a class="navbar-brand" href="/"> Welcome {username} </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
 
-            </ul>
-         </div>
-      </div>
-  </nav>
-
-
+     <div class="collapse navbar-collapse" id="navBar">
+       <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item"></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Update Budget</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END OF NAVBAR -->
 
 <div class="container-fluid">
 
 	<div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-1" id="left">
-            <br><h4>Total Budget:</h4>
-        </div>
-        <div class="col-sm-4 offset-md-2" id="left">
-            <br><h4>Current Budget:</h4>
-        </div>
+      <div class="col-md-4 offset-md-1" id="left">
+        <br><h4>Total Budget:</h4>
+      </div>
+      <div class="col-sm-4 offset-md-2" id="left">
+        <br><h4>Current Budget:</h4>
+      </div>
     </div>
     <br>
 
@@ -57,7 +69,7 @@
     <div class = "row">
       <div class="col-md-4" id="bar">
         <ul class="vertical">
-          <li> Today's Date: </li>
+          <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
           <li> Current Budget: </li>
           <br>
           <li> Total Expense Entries: </li>
@@ -69,7 +81,7 @@
       </div>
 
       <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
-              <br>
+        <br>
         <h3> Expenses </h3>
         <br>
         <form class="form-inline">
@@ -82,30 +94,30 @@
           <div class="form-group">
             <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
           </div>
-           <button type="submit" class="btn btn-primary mb-2">Add</button>
-      </form>   
-      <br>
-      <table>
-        <tr>
+          <button type="submit" class="btn btn-primary mb-2">Add</button>
+        </form>   
+        <br>
+        <table>
+          <tr>
 
-          <th> Description </th>
-          <th> Amount </th>
-          <th> Due Date </th>
-        </tr>
-        <tr>
-          <td> Description </td>
-          <td> Amount </td>
-          <td> Due Date </td>
-        </tr>
-         <tr>
-          <td> Description </td>
-          <td> Amount </td>
-          <td> Due Date </td>
-        </tr>
-      </table>
+            <th> Description </th>
+            <th> Amount </th>
+            <th> Due Date </th>
+          </tr>
+          <tr>
+            <td> Description </td>
+            <td> Amount </td>
+            <td> Due Date </td>
+          </tr>
+          <tr>
+            <td> Description </td>
+            <td> Amount </td>
+            <td> Due Date </td>
+          </tr>
+        </table>
       </div>
-        
-    
+
+
 
       <div class="col-md-7 offset-md-1 tabcontent" id="Goals" style="border-color: green; border-style: solid; border-width: 1px">
         <br>
@@ -121,38 +133,34 @@
           <div class="form-group">
             <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
           </div>
-           <button type="submit" class="btn btn-primary mb-2">Add</button>
-      </form>   
-      <br>
-      <table>
-        <tr>
-          <th>  </th>
-          <th> Description </th>
-          <th> Amount </th>
-          <th> Due Date </th>
-        </tr>
-        <tr>
-          <td> </td>
-          <td> Description </td>
-          <td> Amount </td>
-          <td> Due Date </td>
-        </tr>
-         <tr>
-          <td></td>
-          <td> Description </td>
-          <td> Amount </td>
-          <td> Due Date </td>
-        </tr>
-      </table>
+          <button type="submit" class="btn btn-primary mb-2">Add</button>
+        </form>   
+        <br>
+        <table>
+          <tr>
+            <th>  </th>
+            <th> Description </th>
+            <th> Amount </th>
+            <th> Due Date </th>
+          </tr>
+          <tr>
+            <td> </td>
+            <td> Description </td>
+            <td> Amount </td>
+            <td> Due Date </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td> Description </td>
+            <td> Amount </td>
+            <td> Due Date </td>
+          </tr>
+        </table>
       </div>
-</div>
+    </div>
 
-	</div>
-
-
-
-	<script type="text/javascript" src="/js/home.js"></script>
-
-
+  </div>
+<!-- END OF MAIN USER PAGE -->
+  <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
