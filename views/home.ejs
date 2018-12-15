@@ -56,10 +56,10 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget: </h4>
+        <br><h4>Total Budget:</h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Current Budget:</h4>
+        <br><h4>Current Budget: <%= result.currentBudget %></h4>
       </div>
     </div>
     <br>
@@ -106,7 +106,6 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
         <table>
           <tr>
-            <th data-field="state" data-checkbox="true"></th>
             <th> Description </th>
             <th> Amount </th>
             <th> Category </th>
@@ -146,7 +145,7 @@ body{font-family: 'Roboto', sans-serif;}
         </form>   
         
         <br>
-        
+
         <table>
 
           <tr>
