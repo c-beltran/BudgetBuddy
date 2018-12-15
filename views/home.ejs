@@ -52,10 +52,10 @@ body{font-family: 'Roboto', sans-serif;}
 		<!-- Modal Content -->
 		<div class="modal-content">
 			<h4 id= 'title'>Update Budget</h4>
-			<form id="updateBudget">
-			<p>New Budget: <input id="newbudget" type="text"></p>
+			<form id="updateBudget" method= "POST" action= '/budgetbuddy/home/user/<%result["_id"]%>/updateBudget'>
+			<p>New Budget: <input id="newBudget" name= "newBudget" type="text"></p>
 			</form>
-      <button id="btn" onclick="save()">Save</button>
+      <button id="btn" onclick="save()" type = "submit">Save</button>
       <button id="btn2" onclick= "cancel()">Cancel</button>
 		</div>
 	</div>

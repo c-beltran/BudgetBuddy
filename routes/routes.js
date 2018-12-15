@@ -14,15 +14,8 @@ router.get('/', function(req, res){
 
 //route for homepage
 router.get('/budgetbuddy', function(req, res){
-	// res.send("This is the Homepage");
-	//res.render("homepage");
-	User.find({}, function(err, result){
-		if(err){
-			console.log("Failed to find all users.. ", err);
-			}else{	//the first result can be named anything, the second is the one
-				res.render('sample', {result: result});
-			}
-		});
+	//res.send("This is the Homepage");
+	res.render("homepage");
 });
 
 //route for login page
@@ -82,7 +75,9 @@ router.post('/budgetbuddy/sign_up/user', function(req, res){
 		
 });
 
-
+router.post('/budgetbuddy/home/user/:id/updateBudget', function(req, res){
+	User.update({_id: req.params.id}, {'$push' : {currBudget: req.body.newBudget}});
+});
 
 //all other pages end up here
 router.get("*", function(req, res) {
@@ -108,7 +103,8 @@ router.post('/budgetbuddy/home/user', function(req, res){
 	//if tab is expense
 	expense = {description: req.body.description,
 			amount: req.body.amount,
-			dateOfPurchase: today;
+			dateOfPurchase: req.body.today,
+			category: req.body.category }
 	User.update({//user}, {'$push': { expenses: expense}});
 
 	//if tab is goals

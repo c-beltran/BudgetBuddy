@@ -24,9 +24,6 @@ function close(){
   modal.style.display = "none";
 }
 
-function save(){
-  
-}
 //logic to get date
 var span = document.getElementById("show-date");
 var today = new Date();
