@@ -65,7 +65,7 @@ router.post('/budgetbuddy/sign_up/user', function(req, res){
 		else{
 			user.isActive = true;
 			res.render('home', {user: user})
-		//console.log(docs);
+		console.log(user);
 		}
 	});
 });

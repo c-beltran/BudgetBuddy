@@ -26,11 +26,12 @@ body{font-family: 'Roboto', sans-serif;}
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <a class="navbar-brand" style="color:white"> Welcome {username} </a>
+      <%user.forEach(function(result){%>
+      <a class="navbar-brand" style="color:white"> Welcome <%= result.firstName %> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-
+     <%});%>
      <div class="collapse navbar-collapse" id="navBar">
        <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"></li>
