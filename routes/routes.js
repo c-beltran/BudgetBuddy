@@ -8,20 +8,24 @@ router.get('/', function(req, res){
 	res.redirect('/budgetbuddy');
 });
 
+//route for homepage
 router.get('/budgetbuddy', function(req, res){
 	// res.send("This is the Homepage");
 	res.render("homepage");
 	
 });
 
+//route for login page
 router.get('/budgetbuddy/sign_in', function(req, res){
 	res.render("login");
 });
 
+//route for sign up page
 router.get('/budgetbuddy/sign_up', function(req, res){
 	res.render("signup");
 });
 
+//route for user main activity page
 router.get('/budgetbuddy/home', function(req, res){
 	res.render('home');
 });
