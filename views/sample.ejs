@@ -7,7 +7,7 @@
 <body>
 <body>
 	<h1>This is the landing page :)</h1>
-	<!-- <%result.forEach(function(user){%> -->
+	<%result.forEach(function(user){%>
 		<p>Name: <%=user.firstName + " " + user.lastName %></p>
 		<p>Email: <%= user.email%></p>
 		<p>Current Budget: $<%= user['account'].currBudget%></p>
@@ -17,7 +17,7 @@
 			<p>Date of purchase: <%= user.expenses[i].dateOfPurchase %></p>
 			<p>Category: <%= user.expenses[i].category %></p>
 			<hr>
-		 <!-- <%};%> -->
+		 <%};%>
 		<p><%for(var i= 0; i< user.goals.length; i++){ %> <strong>Goals: </strong></p>
 			<p>Description: <%= user.goals[i].description%></p>
 			<p>Date: <%= user.goals[i].date%></p>
