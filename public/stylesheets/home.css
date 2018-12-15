@@ -57,7 +57,7 @@ tr:nth-child(even) {
 
 #left{
 	border-width: 1px;
-	border-color: gray;
+	border-color: black;
 	border-style: solid;
 	margin-top: 2%;
 	border-radius: 30px;
