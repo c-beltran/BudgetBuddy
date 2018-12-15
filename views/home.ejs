@@ -68,10 +68,10 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget:</h4>
+        <br><h4>Total Budget: <%= result.currentBudget %></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Current Budget: <%= result.currentBudget %></h4>
+        <br><h4>Remaining Budget: </h4>
       </div>
     </div>
     <br>
@@ -89,7 +89,7 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Current Budget:  </li>
+          <li> Remaining Budget:  </li>
           <br>
           <li> Total Expense Entries: <%= result.expenses.length %></li>
           <li> Total Amount of Expenses:  </li>
@@ -99,7 +99,7 @@ body{font-family: 'Roboto', sans-serif;}
         </ul>
       </div>
 
-      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
+      <div class="col-lg-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px;">
         <br>
         <h3> Expenses </h3>
         <br>
@@ -110,10 +110,20 @@ body{font-family: 'Roboto', sans-serif;}
           <div class="form-group">
             <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
           </div>
+
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+                <select class="form-control mb-2 mr-sm-2" id="exampleFormControlSelect1">
+                  <option value="" selected disabled>Category</option>
+                  <option>Essentials</option>
+                  <option>Entertainment</option>
+                  <option>Misc.</option>
+                </select>
+            </div>
+
+          <div class="form-group">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" style="width:180px">
           </div>
-          <button type="submit" class="btn btn-primary mb-2">Add</button>
+          <button type="submit" class="btn btn-primary mb-2" >Add</button>
         </form>   
         <br>
         <table>
@@ -136,8 +146,6 @@ body{font-family: 'Roboto', sans-serif;}
         </table>
       </div>
 
-
-
       <div class="col-md-7 offset-md-1 tabcontent" id="Goals" style="border-color: green; border-style: solid; border-width: 1px">
         <br>
         <h3> Goals </h3>
@@ -159,24 +167,20 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
 
         <table>
-
-          <tr>
-            
+          <tr>     
             <th> Description </th>
             <th> Amount </th>
             <th> Due Date </th>
           </tr>
-
-           <% for(var i = 0; i < result.goals.length; i++){%>
+          <% for(var i = 0; i < result.goals.length; i++){%>
           <tr>
-           
             <td> <%= result.goals[i].description %> </td>
             <td> <%= result.expenses[i].amount %> </td>
             <td> <%= result.expenses[i].date %> </td>
           </tr>  
          <% }; %>
-
         </table>
+
       </div>
     </div>
 
