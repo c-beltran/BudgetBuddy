@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Budget Buddy</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+  <title>Budget Buddy</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -26,11 +26,12 @@ body{font-family: 'Roboto', sans-serif;}
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <a class="navbar-brand" href="/"> Welcome {username} </a>
+      <%user.forEach(function(result){%>
+      <a class="navbar-brand" style="color:white"> Welcome <%= result.firstName %> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-
+  
      <div class="collapse navbar-collapse" id="navBar">
        <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"></li>
@@ -39,7 +40,7 @@ body{font-family: 'Roboto', sans-serif;}
             Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Update Budget</a>
+            <button class="dropdown-item" type = "button" onclick = show() >Update Budget</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Log Out</a>
           </div>
@@ -47,18 +48,30 @@ body{font-family: 'Roboto', sans-serif;}
       </ul>
     </div>
   </div>
+  <div id= 'myModal' class="modal">
+		<!-- Modal Content -->
+		<div class="modal-content">
+			<h4 id= 'title'>Update Budget</h4>
+			<form id="updateBudget">
+			<p>New Budget: <input id="newbudget" type="text"></p>
+			</form>
+      <button id="btn" onclick="save()">Save</button>
+      <button id="btn2" onclick= "cancel()">Cancel</button>
+		</div>
+	</div>
 </nav>
 <!-- END OF NAVBAR -->
 
+
 <div class="container-fluid">
 
-	<div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget:</h4>
+        <br><h4>Total Budget: <%= result.currentBudget %></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Current Budget:</h4>
+        <br><h4>Remaining Budget: </h4>
       </div>
     </div>
     <br>
@@ -76,17 +89,17 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Current Budget: </li>
+          <li> Remaining Budget:  </li>
           <br>
-          <li> Total Expense Entries: </li>
-          <li> Total Amount of Expenses: </li>
+          <li> Total Expense Entries: <%= result.expenses.length %></li>
+          <li> Total Amount of Expenses:  </li>
           <br>
-          <li> Total Goals Created: </li>
+          <li> Total Goals Created: <%= result.goals.length %></li>
           <li> Total Goals Completed: </li>
         </ul>
       </div>
 
-      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
+      <div class="col-lg-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px;">
         <br>
         <h3> Expenses </h3>
         <br>
@@ -97,39 +110,48 @@ body{font-family: 'Roboto', sans-serif;}
           <div class="form-group">
             <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
           </div>
+
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+                <select class="form-control mb-2 mr-sm-2" id="exampleFormControlSelect1">
+                  <option value="" selected disabled>Category</option>
+                  <option>Essentials</option>
+                  <option>Entertainment</option>
+                  <option>Misc.</option>
+                </select>
+            </div>
+
+          <div class="form-group">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" style="width:180px">
           </div>
-          <button type="submit" class="btn btn-primary mb-2">Add</button>
+          <button type="submit" class="btn btn-primary mb-2" >Add</button>
         </form>   
         <br>
         <table>
           <tr>
-
             <th> Description </th>
             <th> Amount </th>
+            <th> Category </th>
             <th> Due Date </th>
           </tr>
+   
+          <% for(var i = 0; i < result.expenses.length; i++){%>
           <tr>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
-          <tr>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
+            <td> <%= result.expenses[i].item %> </td>
+            <td> <%= result.expenses[i].price %> </td>
+            <td> <%= result.expenses[i].category %> </td>
+            <td> <%= result.expenses[i].dateOfPurchase %> </td>
+          </tr>  
+         <% }; %>
+
         </table>
       </div>
-
-
 
       <div class="col-md-7 offset-md-1 tabcontent" id="Goals" style="border-color: green; border-style: solid; border-width: 1px">
         <br>
         <h3> Goals </h3>
         <br>
-        <form class="form-inline">
+        
+        <form class="form-inline" action="/home" method="POST">
           <div class="form-group">
             <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
           </div>
@@ -141,31 +163,29 @@ body{font-family: 'Roboto', sans-serif;}
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
+        
         <br>
+
         <table>
-          <tr>
-            <th>  </th>
+          <tr>     
             <th> Description </th>
             <th> Amount </th>
             <th> Due Date </th>
           </tr>
+          <% for(var i = 0; i < result.goals.length; i++){%>
           <tr>
-            <td> </td>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
+            <td> <%= result.goals[i].description %> </td>
+            <td> <%= result.expenses[i].amount %> </td>
+            <td> <%= result.expenses[i].date %> </td>
+          </tr>  
+         <% }; %>
         </table>
+
       </div>
     </div>
 
   </div>
+     <%});%>
 <!-- END OF MAIN USER PAGE -->
   <script type="text/javascript" src="/js/home.js"></script>
 </body>

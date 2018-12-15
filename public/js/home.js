@@ -1,4 +1,7 @@
- function openTab(evt, cityName) {
+import { model } from "mongoose";
+var modal= document.getElementsById('myModal'); 
+
+function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -13,6 +16,17 @@
 }
 document.getElementById("defaultOpen").click();
 
+function show(){
+  modal.style.display = "block";
+}
+
+function close(){
+  modal.style.display = "none";
+}
+
+function save(){
+  
+}
 //logic to get date
 var span = document.getElementById("show-date");
 var today = new Date();
