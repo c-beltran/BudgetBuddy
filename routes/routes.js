@@ -47,8 +47,8 @@ router.post('/budgetbuddy/sign_in/user', function(req, res){
 		else if (docs.length == 0) console.log("An account with this email does not exist");
 		else{
 			docs.isActive = true;
-			res.render('home', {user: docs})
-			//console.log(docs);
+			res.render('home', {user: docs});
+			console.log(JSON.stringify(docs.firstName));
 		}
 	});
 	});
@@ -75,12 +75,14 @@ router.post('/budgetbuddy/sign_up/user', function(req, res){
 		// else if (user.length == 0) console.log("An account with this email does not exist \n");
 		else{
 			user.isActive = true;
-			res.render('home', {user: user})
-		console.log(user);
+			res.render('home', {user: user});
+		
 		}
 	});
 		
 });
+
+
 
 //all other pages end up here
 router.get("*", function(req, res) {
@@ -98,6 +100,7 @@ router.get('/budgetbuddy/sample', function(req, res){
 		}
 	});
 });
+
 
 /*
 router.post('/budgetbuddy/home/user', function(req, res){

@@ -2,6 +2,10 @@ body{
 	background-color: #E2ECFF;
 }
 
+tr.selected {
+  text-decoration: line-through;
+}
+
 ul{
 	list-style: none;
 	font-weight: bold;
