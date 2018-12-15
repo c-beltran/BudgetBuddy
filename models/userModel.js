@@ -11,8 +11,8 @@ var userSchema = new mongoose.Schema({
 		currBudget: Number
 	},
 	expenses: [{
-		item: String,
-		price: Number,
+		description: String,
+		amount: Number,
     	dateOfPurchase: String,
     	category: String
 	}],
