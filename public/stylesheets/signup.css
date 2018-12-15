@@ -102,6 +102,9 @@ footer .col-md-3 ul li {
     max-width: 50px;
 }
 
+.socialIcons a.imgLink:hover img{
+	opacity: 0.5;
+}
 /* for big screen */
 @media (min-width: 768px) {
 	.navbar-expand-md .navbar-nav .nav-link {
