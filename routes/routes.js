@@ -64,8 +64,8 @@ router.post('/budgetbuddy/sign_up/user', function(req, res){
 		// else if (user.length == 0) console.log("An account with this email does not exist \n");
 		else{
 			user.isActive = true;
-			res.render('home', {user: user})
-		console.log(user);
+			res.render('home', {user: user});
+		
 		}
 	});
 });

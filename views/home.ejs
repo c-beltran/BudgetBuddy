@@ -31,7 +31,7 @@ body{font-family: 'Roboto', sans-serif;}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-     <%});%>
+  
      <div class="collapse navbar-collapse" id="navBar">
        <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"></li>
@@ -56,7 +56,7 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget: <%=user %> </h4>
+        <br><h4>Total Budget: </h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
         <br><h4>Current Budget:</h4>
@@ -79,10 +79,10 @@ body{font-family: 'Roboto', sans-serif;}
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
           <li> Current Budget:  </li>
           <br>
-          <li> Total Expense Entries: </li>
-          <li> Total Amount of Expenses: </li>
+          <li> Total Expense Entries: <%= result.expenses.length %></li>
+          <li> Total Amount of Expenses:  </li>
           <br>
-          <li> Total Goals Created: </li>
+          <li> Total Goals Created: <%= result.goals.length %></li>
           <li> Total Goals Completed: </li>
         </ul>
       </div>
@@ -106,21 +106,22 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
         <table>
           <tr>
-
+            <th data-field="state" data-checkbox="true"></th>
             <th> Description </th>
             <th> Amount </th>
+            <th> Category </th>
             <th> Due Date </th>
           </tr>
+   
+          <% for(var i = 0; i < result.expenses.length; i++){%>
           <tr>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
-          <tr>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
+            <td> <%= result.expenses[i].item %> </td>
+            <td> <%= result.expenses[i].price %> </td>
+            <td> <%= result.expenses[i].category %> </td>
+            <td> <%= result.expenses[i].dateOfPurchase %> </td>
+          </tr>  
+         <% }; %>
+
         </table>
       </div>
 
@@ -130,7 +131,8 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
         <h3> Goals </h3>
         <br>
-        <form class="form-inline">
+        
+        <form class="form-inline" action="/home" method="POST">
           <div class="form-group">
             <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
           </div>
@@ -142,31 +144,33 @@ body{font-family: 'Roboto', sans-serif;}
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
+        
         <br>
+        
         <table>
+
           <tr>
-            <th>  </th>
+            
             <th> Description </th>
             <th> Amount </th>
             <th> Due Date </th>
           </tr>
+
+           <% for(var i = 0; i < result.goals.length; i++){%>
           <tr>
-            <td> </td>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td> Description </td>
-            <td> Amount </td>
-            <td> Due Date </td>
-          </tr>
+           
+            <td> <%= result.goals[i].description %> </td>
+            <td> <%= result.expenses[i].amount %> </td>
+            <td> <%= result.expenses[i].date %> </td>
+          </tr>  
+         <% }; %>
+
         </table>
       </div>
     </div>
 
   </div>
+     <%});%>
 <!-- END OF MAIN USER PAGE -->
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
