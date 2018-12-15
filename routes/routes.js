@@ -40,24 +40,34 @@ router.post('/budgetbuddy/sign_in/user', function(req, res){
 			res.render('home', {user: docs})
 			//console.log(docs);
 		}
-	})
+	});
 });
 
 router.post('/budgetbuddy/sign_up/user', function(req, res){
-		//search database for email
-		User.find({email: req.body.email},function (err,docs){
-			//if there is an account with this email output it already exists, else create new user and direct to login page
-			if (docs.length != 0) console.log("An account with this email already exists, please sign in " + docs);
-			else {
-				User.create({
-					firstName: req.body.firstname,
-					lastName: req.body.lastname, 
-					email: req.body.email,
-					password: req.body.password
-				});
-				res.render('login');
-			}
-		});
+	//search database for email
+	User.find({email: req.body.email},function (err,docs){
+		//if there is an account with this email output it already exists, else create new user and direct to login page
+		if (docs.length != 0) console.log("An account with this email already exists, please sign in " + docs);
+		else {
+			User.create({
+				firstName: req.body.firstname,
+				lastName: req.body.lastname, 
+				email: req.body.email,
+				password: req.body.password
+			});
+		}
+	});
+
+	//search if user exists in database
+	User.find({email: req.body.email}, function (err, user){
+		if(err) console.log ("Error");
+		// else if (user.length == 0) console.log("An account with this email does not exist \n");
+		else{
+			user.isActive = true;
+			res.render('home', {user: user})
+		//console.log(docs);
+		}
+	});
 });
 
 //all other pages end up here
