@@ -2,10 +2,6 @@ var express = require("express");
 var router = express.Router(); //this allow us to use 'router' to create our routes for the app.
 //requiring the DB model
 var User = require("../models/userModel");
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
 
 //this is the root route which will redirect to the Homepage
 router.get('/', function(req, res){
@@ -14,8 +10,9 @@ router.get('/', function(req, res){
 
 //route for homepage
 router.get('/budgetbuddy', function(req, res){
-	//res.send("This is the Homepage");
+	// res.send("This is the Homepage");
 	res.render("homepage");
+	
 });
 
 //route for login page
@@ -25,7 +22,7 @@ router.get('/budgetbuddy/sign_in', function(req, res){
 
 //route for sign up page
 router.get('/budgetbuddy/sign_up', function(req, res){
-res.render("signup");
+	res.render("signup");
 });
 
 //route for user main activity page
@@ -33,51 +30,69 @@ router.get('/budgetbuddy/home', function(req, res){
 	res.render('home');
 });
 
+//Adding Expense
+router.post('/budgetbuddy/home/user/:id/exp', function(req, res){
+	var newExpense = {
+		item: req.body.description,
+		price: req.body.amount,
+    	dateOfPurchase: req.body.date,
+    	category: " "
+	}
+
+	User.findById(req.params.id, function (err, result) {
+  		if (err) return handleError(err);
+
+  		result.expenses.push(newExpense);
+  		result.save(function (err, update) {
+    		if (err) return handleError(err);
+    		// res.send(update);
+    		res.render('home');
+  		});
+	});
+});
+
 router.post('/budgetbuddy/sign_in/user', function(req, res){
 	//search if user exists in database
-	User.find({$and: [{ email: req.body.email , password: req.body.password}]}, function (err, docs){
+	User.find({$and: [{ email: req.body.email, password: req.body.password}]}, function (err, docs){
 		if(err) console.log ("Error");
 		else if (docs.length == 0) console.log("An account with this email does not exist");
 		else{
 			docs.isActive = true;
 			res.render('home', {user: docs});
-			console.log(JSON.stringify(docs.firstName));
+			// console.log(JSON.stringify(docs.firstName));
 		}
 	});
-	});
+});
 
 router.post('/budgetbuddy/sign_up/user', function(req, res){
-		//search database for email
-		User.find({email: req.body.email},function (err,docs){
-			//if there is an account with this email output it already exists, else create new user and direct to login page
-			if (docs.length != 0) console.log("An account with this email already exists, please sign in ");
-			else {
-				User.create({
-					firstName: req.body.firstname,
-					lastName: req.body.lastname, 
-					email: req.body.email,
-					password: req.body.password
-				});
-				
-			}		
-		});
+	//search database for email
+	User.find({email: req.body.email},function (err,docs){
+		//if there is an account with this email output it already exists, else create new user and direct to login page
+		if (docs.length != 0) console.log("An account with this email already exists, please sign in " + docs);
+		else {
+			User.create({
+				firstName: req.body.firstname,
+				lastName: req.body.lastname, 
+				email: req.body.email,
+				password: req.body.password
+			});
+			console.log("user created...")
+		}
+	});
 
-		//search if user exists in database
-		User.find({email: req.body.email}, function (err, user){
+	//search if user exists in database
+	User.find({email: req.body.email}, function (err, user){
 		if(err) console.log ("Error");
 		// else if (user.length == 0) console.log("An account with this email does not exist \n");
 		else{
 			user.isActive = true;
 			res.render('home', {user: user});
-		
+			console.log("user found...")
 		}
 	});
-		
 });
 
-router.post('/budgetbuddy/home/user/:id/updateBudget', function(req, res){
-	User.update({_id: req.params.id}, {'$push' : {currBudget: req.body.newBudget}});
-});
+
 
 //all other pages end up here
 router.get("*", function(req, res) {
@@ -98,23 +113,7 @@ router.get('/budgetbuddy/sample', function(req, res){
 
 
 /*
-router.post('/budgetbuddy/home/user', function(req, res){
-
-	//if tab is expense
-	expense = {description: req.body.description,
-			amount: req.body.amount,
-			dateOfPurchase: req.body.today,
-			category: req.body.category }
-	User.update({//user}, {'$push': { expenses: expense}});
-
-	//if tab is goals
-	goal = { description: req.body.description,
-			date: req.body.date,
-			amount: req.body.amount };
-
-	User.update({//user}, {'$push' : { goals: goal}});
-
-	res.render('home');
+router.post('/budgetbuddy/home', function(req, res){
 });
 */
 
