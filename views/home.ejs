@@ -56,10 +56,10 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget:</h4>
+        <br><h4>Total Budget: <%= result.currentBudget %></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Current Budget: <%= result.currentBudget %></h4>
+        <br><h4>Remaining Budget: </h4>
       </div>
     </div>
     <br>
@@ -77,7 +77,7 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Current Budget:  </li>
+          <li> Remaining Budget:  </li>
           <br>
           <li> Total Expense Entries: <%= result.expenses.length %></li>
           <li> Total Amount of Expenses:  </li>
@@ -87,7 +87,7 @@ body{font-family: 'Roboto', sans-serif;}
         </ul>
       </div>
 
-      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
+      <div class="col-lg-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px;">
         <br>
         <h3> Expenses </h3>
         <br>
@@ -109,9 +109,9 @@ body{font-family: 'Roboto', sans-serif;}
             </div>
 
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" style="width:180px">
           </div>
-          <button type="submit" class="btn btn-primary mb-2">Add</button>
+          <button type="submit" class="btn btn-primary mb-2" >Add</button>
         </form>   
         <br>
         <table>
