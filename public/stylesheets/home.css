@@ -1,8 +1,247 @@
-
-#left{
-	background: red;
+body{
+	background-color: #E2ECFF;
 }
 
+ul{
+	list-style: none;
+	font-weight: bold;
+}
+
+
+.vertical{
+	margin-top: 50%;
+	margin-bottom: 50%;
+}
+
+#button{
+	margin-right:2px;
+	border-radius: 0px;
+
+}
+ul#goalsList li {
+  display:inline;
+}
+
+#bar{
+	border-width: 1px;
+	border-color: gray;
+	border-style: solid;
+	border-radius: 10px;
+	background-color: white;
+
+
+}
+
+.tabcontent {
+  float: left;
+  background-color: white;
+  text-align:center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+#left{
+	border-width: 1px;
+	border-color: gray;
+	border-style: solid;
+	margin-top: 2%;
+	border-radius: 30px;
+	background-color: white;
+	padding: 2%;
+
+}
+
+
+
 #right{
-	background: blue;
+	border-width: 1px;
+	border-color: gray;
+	border-style: solid;
+	margin-top: 2%;
+	border-radius: 30px;
+	background-color: white;
+}
+
+/* Custom changes on navbar */
+.bg-green {
+    background: #027878 !important;
+}
+
+.navbar{
+    padding: 0rem 1rem;
+}
+
+.navbar-nav .nav-item {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.navbar-dark .navbar-nav .active{
+    background: #2A91FC;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+
+/* Main content */
+
+.jumbotron {
+    background-color: #E2ECFF;
+    color: #000000;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2A91FC;
+    border-color: #2A91FC;
+}
+
+
+.btn-primary.get-started {
+    color: #fff;
+    background-color: #2A91FC;
+    border-color: #2A91FC;
+    padding: .5rem 3rem;
+}
+
+.btn-primary.get-started:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.jumbotron .col-5{
+    text-align: right;
+}
+
+.jumbotron .col-5 img{
+    max-width: 350px;
+}
+
+.serviceIcon, .serviceTitle, .serviceText {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    color:#000000;
+}
+
+.serviceIcon img{
+    max-width: 130px;
+}
+
+.serviceTitle h3{
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.serviceTitle{
+    margin-top: 20px;
+}
+
+.container.howItworks {
+    padding-top: 50px;
+    padding-bottom: 90px;
+}
+
+/* Set black background color, white text and some padding */
+
+footer {
+    background-color: #027878;
+    color: white;
+    padding: 50px 0px;
+    text-align: center;
+}
+
+footer .col-md-3 h4{
+    margin-bottom: 20px;
+}
+
+footer .col-md-3 a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer .col-md-3 a:hover {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+footer .col-md-3 ul li {
+    margin-bottom: 10px;
+}
+
+.socialIcons{
+    padding-top: 50px;
+}
+
+.socialIcons a{
+    margin-right: 25px;
+}
+
+.socialIcons a img{
+    max-width: 50px;
+}
+
+/* Only for big screens */
+
+@media (min-width: 768px) {
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+
+  .navbar{
+      padding: .5rem 1rem;
+  }
+
+  .navbar-nav .nav-item {
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+  }
+
+  .navbar-dark .navbar-nav .active {
+    background: none;
+}
+
+.jumbotron .col-7 , .jumbotron .col-5 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    padding-bottom: 35px;
+    padding-top: 20px;
+}
+
+.socialIcons {
+    text-align: center;
+    display: inline-block;
+}
+
+footer .col-md-3 {
+    margin-bottom: 35px;
+}
+
 }
