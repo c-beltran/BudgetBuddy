@@ -28,33 +28,33 @@ mongoose.connect(dbURI, {
 
 //********* UNCOMMENT THE BELOW CODE IF YOU LIKE TO ADD A USER TO DB **************
 //adding a new user to db 
-/*
-User.create({
-	firstName: "Test",
-	lastName: "User", 
-	email: "userC@budgetbuddy.com",
-	password: "password123", 
-	account: { currBudget: 500},
-	expenses: [{
-		item: "New Iphone X",
-		price: 1100,
-		dateOfPurchase: "12/1/2018",
-		category: "Utility"},
-		{item: "Grocery",
-		price: 100,
-		dateOfPurchase: "12/15/2018",
-		category: "Food"
-	}],
-	goals: [{ 
-		description: "Save for Christmas shoppping",
-		date: "12/20/2018",
-		amount: 200 },
-		{ description: "Save to buy a car",
-		date: "10/05/2019",
-		amount: 20000
-	}]
-});
-*/
+
+// User.create({
+// 	firstName: "Test",
+// 	lastName: "User", 
+// 	email: "userC@budgetbuddy.com",
+// 	password: "password123", 
+// 	account: { currBudget: 500},
+// 	expenses: [{
+// 		item: "New Iphone X",
+// 		price: 1100,
+// 		dateOfPurchase: "12/1/2018",
+// 		category: "Utility"},
+// 		{item: "Grocery",
+// 		price: 100,
+// 		dateOfPurchase: "12/15/2018",
+// 		category: "Food"
+// 	}],
+// 	goals: [{ 
+// 		description: "Save for Christmas shoppping",
+// 		date: "12/20/2018",
+// 		amount: 200 },
+// 		{ description: "Save to buy a car",
+// 		date: "10/05/2019",
+// 		amount: 20000
+// 	}]
+// });
+
 
 //requiring ROUTES
 var budgetbuddyRoutes = require("./routes/routes.js");
