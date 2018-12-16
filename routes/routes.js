@@ -26,45 +26,48 @@ router.get('/budgetbuddy/sign_up', function(req, res){
 });
 
 //route for user main activity page
-router.get('/budgetbuddy/home', function(req, res){
-	res.render('home');
-});
-
-//Adding Expense
-router.post('/budgetbuddy/home/user/:id/exp', function(req, res){
-	var newExpense = {
-		item: req.body.description,
-		price: req.body.amount,
-    	dateOfPurchase: req.body.date,
-    	category: " "
-	}
-
-	User.findById(req.params.id, function (err, result) {
-  		if (err) return handleError(err);
-
-  		result.expenses.push(newExpense);
-  		result.save(function (err, update) {
-    		if (err) return handleError(err);
-    		// res.send(update);
-    		res.render('home');
-  		});
+router.get('/budgetbuddy/home/:id', function(req, res){
+	User.findById(req.params.id, function (err, user) {
+		if (err) return handleError(err);
+		res.render('home', {user: user});
 	});
 });
 
-router.post('/budgetbuddy/sign_in/user', function(req, res){
+//Adding Expense
+// router.post('/budgetbuddy/home/user/:id/exp', function(req, res){
+// 	var newExpense = {
+// 		item: req.body.description,
+// 		price: req.body.amount,
+//     	dateOfPurchase: req.body.date,
+//     	category: " "
+// 	}
+
+// 	User.findById(req.params.id, function (err, user) {
+//   		if (err) return handleError(err);
+
+//   		user.expenses.push(newExpense);
+//   		user.save(function (err, update) {
+//     		if (err) return handleError(err);
+//     		// res.send(update);
+//     		// res.redirect('/budgetbuddy/home/'+user._id);
+//   		});
+// 	});
+// });
+
+router.post('/budgetbuddy/sign_in', function(req, res){
 	//search if user exists in database
 	User.find({$and: [{ email: req.body.email, password: req.body.password}]}, function (err, docs){
 		if(err) console.log ("Error");
 		else if (docs.length == 0) console.log("An account with this email does not exist");
 		else{
 			docs.isActive = true;
-			res.render('home', {user: docs});
+			res.redirect('/budgetbuddy/home/'+user._id);
 			// console.log(JSON.stringify(docs.firstName));
 		}
 	});
 });
 
-router.post('/budgetbuddy/sign_up/user', function(req, res){
+router.post('/budgetbuddy/sign_up', function(req, res){
 	//search database for email
 	User.find({email: req.body.email},function (err,docs){
 		//if there is an account with this email output it already exists, else create new user and direct to login page
@@ -82,12 +85,19 @@ router.post('/budgetbuddy/sign_up/user', function(req, res){
 
 	//search if user exists in database
 	User.find({email: req.body.email}, function (err, user){
+		var userID = "";
 		if(err) console.log ("Error");
 		// else if (user.length == 0) console.log("An account with this email does not exist \n");
 		else{
 			user.isActive = true;
-			res.render('home', {user: user});
-			console.log("user found...")
+			user.map(function(res){
+				console.log("USER>> ", res._id);
+				userID = res._id
+				console.log("USERIDDDDD___ ", userID);
+			});
+			res.redirect('/budgetbuddy/home/'+userID);
+			// res.render('home', {user: user});
+			// console.log("user found...")
 		}
 	});
 });

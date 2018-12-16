@@ -26,8 +26,7 @@ body{font-family: 'Roboto', sans-serif;}
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <%user.forEach(function(result){%>
-      <a class="navbar-brand" style="color:white"> Welcome <%= result.firstName %> </a>
+      <a class="navbar-brand" style="color:white"> Welcome <%= user.firstName %> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
@@ -52,7 +51,7 @@ body{font-family: 'Roboto', sans-serif;}
 		<!-- Modal Content -->
 		<div class="modal-content">
 			<h4 id= 'title'>Update Budget</h4>
-			<form id="updateBudget" method= "POST" action= '/budgetbuddy/home/user/<%result["_id"]%>/updateBudget'>
+			<form id="updateBudget" method= "POST" action= '/budgetbuddy/home/user/<%user["_id"]%>/updateBudget'>
 			<p>New Budget: <input id="newBudget" name= "newBudget" type="text"></p>
 			</form>
       <button id="btn" onclick="save()" type = "submit">Save</button>
@@ -68,7 +67,7 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget: <%= result.currentBudget %></h4>
+        <br><h4>Total Budget: <%= user.currentBudget %></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
         <br><h4>Remaining Budget: </h4>
@@ -91,10 +90,10 @@ body{font-family: 'Roboto', sans-serif;}
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
           <li> Remaining Budget:  </li>
           <br>
-          <li> Total Expense Entries: <%= result.expenses.length %></li>
+          <li> Total Expense Entries: <%= user.expenses.length %></li>
           <li> Total Amount of Expenses:  </li>
           <br>
-          <li> Total Goals Created: <%= result.goals.length %></li>
+          <li> Total Goals Created: <%= user.goals.length %></li>
           <li> Total Goals Completed: </li>
         </ul>
       </div>
@@ -103,7 +102,7 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
         <h3> Expenses </h3>
         <br>
-        <form class="form-inline" method='POST' action='/budgetbuddy/home/user/<%=result["_id"]%>/exp'>
+        <form class="form-inline" method='POST' action='/budgetbuddy/home/user/<%=user["_id"]%>/exp'>
           <div class="form-group">
             <input type="text" class="form-control mb-2 mr-sm-2" id="description" name="description" placeholder="Description">
           </div>
@@ -111,17 +110,8 @@ body{font-family: 'Roboto', sans-serif;}
             <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" name="amount" placeholder="0.00" style="width:60px">
           </div>
 
-          <div class="form-group">
-                <select class="form-control mb-2 mr-sm-2" id="exampleFormControlSelect1">
-                  <option value="" selected disabled>Category</option>
-                  <option>Essentials</option>
-                  <option>Entertainment</option>
-                  <option>Misc.</option>
-                </select>
-            </div>
             
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" style="width:180px">
             <input type="date" class="form-control mb-2 mr-sm-2" id="date" name="date" placeholder="MM/DD/YYYY">
           </div>
           <button type="submit" class="btn btn-primary mb-2" >Add</button>
@@ -135,12 +125,12 @@ body{font-family: 'Roboto', sans-serif;}
             <th> Due Date </th>
           </tr>
    
-          <% for(var i = 0; i < result.expenses.length; i++){%>
+          <% for(var i = 0; i < user.expenses.length; i++){%>
           <tr>
-            <td> <%= result.expenses[i].item %> </td>
-            <td> <%= result.expenses[i].price %> </td>
-            <td> <%= result.expenses[i].category %> </td>
-            <td> <%= result.expenses[i].dateOfPurchase %> </td>
+            <td> <%= user.expenses[i].item %> </td>
+            <td> <%= user.expenses[i].price %> </td>
+            <td> <%= user.expenses[i].category %> </td>
+            <td> <%= user.expenses[i].dateOfPurchase %> </td>
           </tr>  
          <% }; %>
 
@@ -173,11 +163,11 @@ body{font-family: 'Roboto', sans-serif;}
             <th> Amount </th>
             <th> Due Date </th>
           </tr>
-          <% for(var i = 0; i < result.goals.length; i++){%>
+          <% for(var i = 0; i < user.goals.length; i++){%>
           <tr>
-            <td> <%= result.goals[i].description %> </td>
-            <td> <%= result.expenses[i].amount %> </td>
-            <td> <%= result.expenses[i].date %> </td>
+            <td> <%= user.goals[i].description %> </td>
+            <td> <%= user.goals[i].amount %> </td>
+            <td> <%= user.goals[i].date %> </td>
           </tr>  
          <% }; %>
         </table>
@@ -186,7 +176,6 @@ body{font-family: 'Roboto', sans-serif;}
     </div>
 
   </div>
-     <%});%>
 <!-- END OF MAIN USER PAGE -->
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
