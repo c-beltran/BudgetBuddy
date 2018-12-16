@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/c-beltran/BudgetBuddy#readme",
   "dependencies": {
+    "alert-node": "^1.2.3",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",

@@ -18,7 +18,7 @@ var dbURI = (env == 'dev')? 'mongodb://localhost/budget_buddy' : process.env.MON
 //this is our templating language which allows us to use JS in html
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 //app.use(formidable());
 
 //CONNECTING DBS

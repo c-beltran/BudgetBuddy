@@ -22,32 +22,46 @@ body{font-family: 'Roboto', sans-serif;}
 
 <body style="background-color: #E2ECFF;">
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-green">
+  <nav class="navbar navbar-expand-md navbar-dark bg-blue">
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <%user.forEach(function(result){%>
-      <a class="navbar-brand" style="color:white"> Welcome <%= result.firstName %> </a>
+      <a class="navbar-brand" style="color:white"> Welcome <%= user.firstName %> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-  
      <div class="collapse navbar-collapse" id="navBar">
        <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"></li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="font-size: 20px;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Update Budget</a>
+            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#myModal">Update Budget</button>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="/" onclick="<% user.isActive = false; %>">Log Out</a>
           </div>
         </li>
       </ul>
     </div>
   </div>
+ <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <button type="button" class="btn btn-light" data-dismiss="modal" style="width: 15px; margin-left: 230px; padding-left: 5px; padding-right: 10px;">x</button>
+          <div class="modal-header" style="padding: 0px;">
+            <h4 class="modal-title">Update Budget</h4>
+          </div>
+          <div class="modal-body">
+            <form class = "form-inline" method= "POST" action= '/budgetbuddy/home/<%=user._id%>/updateBudget'>
+              <p>New Budget: <input id="newBudget" name= "newBudget" type="text"></p>
+              <button id="btn" class= "btn btn-primary" type = "submit">Save</button>
+            </form>             
+          </div>
+        </div>
+      </div>
+    </div>
 </nav>
 <!-- END OF NAVBAR -->
 
@@ -56,17 +70,21 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget: <%= result.currentBudget %></h4>
+        <br><h4>Total Budget: <span class="text-success">$<%= user.currentBudget %></span></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Remaining Budget: </h4>
+        <%var totalExpenseAmount = 0;%>
+        <% for(var i = 0; i < user.expenses.length; i++){%>
+            <% totalExpenseAmount = totalExpenseAmount +  user.expenses[i].amount; %>
+        <%}%>
+        <br><h4>Remaining Budget: <span class="text-danger">$<%= user.currentBudget - totalExpenseAmount%></span></h4>
       </div>
     </div>
     <br>
 
     <div class="row">
       <div class="col-xs-1 offset-sm-5" id="button">
-        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')" >Expenses</button>
+        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')">Expenses</button>
       </div>
       <div class="col-xs-1" id="button">
         <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" id="defaultOpen">Goals</button>
@@ -77,104 +95,113 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Remaining Budget:  </li>
+          <li> Remaining Budget:  <span class="text-danger" style="font-weight: normal;">$<%= user.currentBudget - totalExpenseAmount%></span></li>
           <br>
-          <li> Total Expense Entries: <%= result.expenses.length %></li>
-          <li> Total Amount of Expenses:  </li>
+          <li> Total Expense Entries: <span style="font-weight: normal;"><%= user.expenses.length %></span></li>
+          <li> Total Amount of Expenses: <spanstyle="font-weight: normal;">$<%= totalExpenseAmount %></span></li>
           <br>
-          <li> Total Goals Created: <%= result.goals.length %></li>
-          <li> Total Goals Completed: </li>
+          <li> Total Goals Created: <span style="font-weight: normal;"><%= user.goals.length %></span></li>
+          <li> Total Goals Completed: <span style="font-weight: normal;">0</span></li>
         </ul>
       </div>
 
-      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px;">
+      <div class="col-md-7 offset-md-1 tabcontent" id="Expenses" style="border-color: blue; border-style: solid; border-width: 1px">
         <br>
         <h3> Expenses </h3>
         <br>
-        <form class="form-inline">
+        <form class="form-inline" method='POST' action='/budgetbuddy/home/<%=user._id%>/expenses'>
           <div class="form-group">
-            <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" name="description" placeholder="Description">
           </div>
           <div class="form-group">
-            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
+            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" name="amount" placeholder="0.00" style="width:60px">
+          </div>
+          <div class="form-group">
+
+            <div class="dropdown" style="margin-right: 10px; margin-bottom: 10px;">
+            <select name="categorySelection" required>
+              <option value="">Select a Category</option>
+              <option value="Entertaiment">Entertaiment</option>
+              <option value="Essentials">Essentials</option>
+              <option value="Food">Food</option>
+              <option value="Misc.">Misc.</option>
+            </select>
           </div>
 
-          <div class="form-group">
-                <select class="form-control mb-2 mr-sm-2" id="exampleFormControlSelect1">
-                  <option value="" selected disabled>Category</option>
-                  <option>Essentials</option>
-                  <option>Entertainment</option>
-                  <option>Misc.</option>
-                </select>
-            </div>
-
-          <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" style="width:180px">
           </div>
-          <button type="submit" class="btn btn-primary mb-2" >Add</button>
+          <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
         <br>
         <table>
           <tr>
+
             <th> Description </th>
-            <th> Amount </th>
             <th> Category </th>
-            <th> Due Date </th>
+            <th> Date </th>
+            <th> Amount </th>
           </tr>
-   
-          <% for(var i = 0; i < result.expenses.length; i++){%>
+          <% for(var i = 0; i < user.expenses.length; i++){%>
           <tr>
-            <td> <%= result.expenses[i].item %> </td>
-            <td> <%= result.expenses[i].price %> </td>
-            <td> <%= result.expenses[i].category %> </td>
-            <td> <%= result.expenses[i].dateOfPurchase %> </td>
+            <td> <%= user.expenses[i].description %> </td>
+            <td> <%= user.expenses[i].category %> </td>
+            <td> <%= user.expenses[i].dateOfPurchase %> </td>
+            <td>$ <%= user.expenses[i].amount %> </td>
           </tr>  
          <% }; %>
-
         </table>
       </div>
+
+
 
       <div class="col-md-7 offset-md-1 tabcontent" id="Goals" style="border-color: green; border-style: solid; border-width: 1px">
         <br>
         <h3> Goals </h3>
         <br>
-        
-        <form class="form-inline" action="/home" method="POST">
+        <form class="form-inline" method='POST' action='/budgetbuddy/home/<%=user._id%>/goals'>
           <div class="form-group">
-            <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" name= "description" placeholder="Description">
           </div>
           <div class="form-group">
-            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
+            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" name = "amount" placeholder="0.00" style="width:60px">
           </div>
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+            <input type="date" class="form-control mb-2 mr-sm-2" id="date" name = "date" placeholder="MM/DD/YYYY">
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
-        
         <br>
-
         <table>
-          <tr>     
+          <tr>
+            <th>  </th>
             <th> Description </th>
             <th> Amount </th>
             <th> Due Date </th>
           </tr>
-          <% for(var i = 0; i < result.goals.length; i++){%>
+          <% for(var i = 0; i < user.goals.length; i++){%>
           <tr>
-            <td> <%= result.goals[i].description %> </td>
-            <td> <%= result.expenses[i].amount %> </td>
-            <td> <%= result.expenses[i].date %> </td>
+            <td><input type="checkbox" name="chkbox[]"></td>
+            <td> <%= user.goals[i].description %> </td>
+            <td> <%= user.goals[i].amount %> </td>
+            <td> <%= user.goals[i].date %> </td>
           </tr>  
          <% }; %>
         </table>
-
       </div>
     </div>
 
   </div>
-     <%});%>
 <!-- END OF MAIN USER PAGE -->
-  <script type="text/javascript" src="/js/home.js"></script>
+<script>
+  var myModal = document.getElementById('myModal');
+
+  function openModal() {
+    myModal.style.display = 'block';
+  }
+
+  function closeModal(){
+    myModal.style.display = "none";
+  }
+</script>
+<script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>

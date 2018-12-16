@@ -1,12 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Budget Buddy</title>
+	<title>Log In</title>
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
 </head>
 <body>
-	<h1>This is the log in page :)</h1>
-	
-	<script type="text/javascript" src="/js/login.js"></script>
+	<!-- navigation bar -->
+	<nav class="navbar navbar-expand-md navbar-dark bg-green">
+		<div class="container">
+			<a class="navbar-brand" href="/">Budget Buddy</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navBar">
+				<ul class="nav navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link active" href="/budgetbuddy/sign_in">Log In</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/budgetbuddy/sign_up">Sign Up<span class="sr-only">(current)</span></a>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	</br>
+
+	<!-- a cute photo of budget buddy -->
+	<div>
+		<img src="/assets/WalletLogo.png" class="mx-auto d-block" alt="Budget buddy" width=auto height=auto>
+	</div>
+	</br>
+
+	<!-- sign up form -->
+	<div id="form" class="container-fluid">
+		<h1 class="text-center">Log In</h1>
+		<form method='POST' action='/budgetbuddy/sign_in'>
+			<div class="form-group">
+				<label>Email:</label>
+				<input type="email" name="email" value="Enter your Email." required>
+			</div>
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" name="password" value="Enter your password." required>
+			</div>
+			<div class="form-group">
+				<input type="submit" onmouseover="this.value='Submit'" onmouseout="this.value='Submit'" value="Submit" id="submit">
+			</div>
+		</form>
+		<p>Forgot Your Password? <a href="">Reset Here</a></p>
+	</div>
+	</br></br></br></br></br>
+
+	<!-- footer -->
+	<footer>
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-3">
+				<h4>GET TO KNOW US</h4>
+				<ul class="list-unstyled">
+				<li>
+					<a href="#">About Us</a>
+				</li>
+				<li>
+					<a href="#">Our Team</a>
+				</li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+				<h4>WHAT WE OFFER</h4>
+				<ul class="list-unstyled">
+				<li>
+					<a href="#">Easy to Use Application</a>
+				</li>
+				<li>
+					<a href="#">Expense Tracking System</a>
+				</li>
+				<li>
+					<a href="#">Goal Setting Feature</a>
+				</li>
+				<li>
+					<a href="#">History Feature</a>
+				</li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+				<h4>RESOURCES</h4>
+				<ul class="list-unstyled">
+				<li>
+					<a href="#">Save Smarter</a>
+				</li>
+				<li>
+					<a href="#">Spend Smarter</a>
+				</li>
+				<li>
+					<a href="#">Look For Coupons</a>
+				</li>
+				<li>
+					<a href="#">Online Deals</a>
+				</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row justify-content-md-center socialIcons">
+			<a href="#" class="imgLink"><img src="/assets/fb.png" alt="Facebook" /></a>
+			<a href="#" class="imgLink"><img src="/assets/snap.png" alt="Social" /></a>
+			<a href="#" class="imgLink"><img src="/assets/insta.png" alt="Instagram" /></a>
+			<a href="#" class="imgLink"><img src="/assets/tw.png" alt="Twitter" /></a>
+			<a href="#" class="imgLink"><img src="/assets/LinkedIn.png" alt="LinkedIn" /></a>
+		</div>
+		<div class="row justify-content-md-center socialIcons">
+			<p>Budget Buddy 2018. All rights reserved.</p>
+		</div>
+	</div>
+	</footer>
+
+	<!-- scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
