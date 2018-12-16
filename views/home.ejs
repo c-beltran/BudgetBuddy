@@ -33,7 +33,7 @@ body{font-family: 'Roboto', sans-serif;}
      <div class="collapse navbar-collapse" id="navBar">
        <ul class="nav navbar-nav ml-auto">
         <li class="nav-item"></li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="font-size: 20px;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
           </a>
@@ -135,7 +135,7 @@ body{font-family: 'Roboto', sans-serif;}
             <td> <%= user.expenses[i].description %> </td>
             <td> <%= user.expenses[i].category %> </td>
             <td> <%= user.expenses[i].dateOfPurchase %> </td>
-            <td> <%= user.expenses[i].amount %> </td>
+            <td>$ <%= user.expenses[i].amount %> </td>
           </tr>  
          <% }; %>
         </table>

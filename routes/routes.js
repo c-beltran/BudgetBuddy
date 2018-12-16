@@ -60,7 +60,7 @@ router.post('/budgetbuddy/home/:id/expenses', function(req, res){
   		user.expenses.push(newExpense);
   		user.save(function (err, update) {
     		if (err) return handleError(err);
-    		res.status(204).send();
+    		res.redirect('back');
     		// res.send(update);
     		// res.redirect('/budgetbuddy/home/'+user._id);
   		});
@@ -71,7 +71,7 @@ router.post('/budgetbuddy/sign_in', function(req, res){
 	//search if user exists in database
 	User.find({$and: [{ email: req.body.email, password: req.body.password}]}, function (err, docs){
 		if(err) console.log ("Error");
-		else if (docs.length == 0) console.log("An account with this email does not exist");
+		else if (docs.length == 0) alert("An account with this email does not exist");
 		else{
 			User.find({email: req.body.email}, function (err, user){
 				var userID = "";
