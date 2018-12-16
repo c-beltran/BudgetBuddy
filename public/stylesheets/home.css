@@ -82,8 +82,8 @@ tr:nth-child(even) {
 }
 
 /* Custom changes on navbar */
-.bg-green {
-    background: #027878 !important;
+.bg-blue {
+    background: #2A91FC !important;
 }
 
 .navbar{

@@ -33,26 +33,39 @@ router.get('/budgetbuddy/home/:id', function(req, res){
 	});
 });
 
-//Adding Expense
-// router.post('/budgetbuddy/home/user/:id/exp', function(req, res){
-// 	var newExpense = {
-// 		item: req.body.description,
-// 		price: req.body.amount,
-//     	dateOfPurchase: req.body.date,
-//     	category: " "
-// 	}
+// Adding Expense
+router.post('/budgetbuddy/home/:id/expenses', function(req, res){
+	//date logic
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
 
-// 	User.findById(req.params.id, function (err, user) {
-//   		if (err) return handleError(err);
+	if(dd<10) { dd = '0'+dd } 
+	if(mm<10) { mm = '0'+mm } 
 
-//   		user.expenses.push(newExpense);
-//   		user.save(function (err, update) {
-//     		if (err) return handleError(err);
-//     		// res.send(update);
-//     		// res.redirect('/budgetbuddy/home/'+user._id);
-//   		});
-// 	});
-// });
+	today = mm + '/' + dd + '/' + yyyy;
+	
+	//createing an object to push to db
+	var newExpense = {
+		description: req.body.description,
+		amount: req.body.amount,
+    	dateOfPurchase: today,
+    	category: req.body.categorySelection
+	}
+
+	User.findById(req.params.id, function (err, user) {
+  		if (err) return handleError(err);
+
+  		user.expenses.push(newExpense);
+  		user.save(function (err, update) {
+    		if (err) return handleError(err);
+    		res.status(204).send();
+    		// res.send(update);
+    		// res.redirect('/budgetbuddy/home/'+user._id);
+  		});
+	});
+});
 
 router.post('/budgetbuddy/sign_in', function(req, res){
 	//search if user exists in database
@@ -60,9 +73,19 @@ router.post('/budgetbuddy/sign_in', function(req, res){
 		if(err) console.log ("Error");
 		else if (docs.length == 0) console.log("An account with this email does not exist");
 		else{
-			docs.isActive = true;
-			res.redirect('/budgetbuddy/home/'+user._id);
-			// console.log(JSON.stringify(docs.firstName));
+			User.find({email: req.body.email}, function (err, user){
+				var userID = "";
+				if(err) console.log ("Error");
+				// else if (user.length == 0) console.log("An account with this email does not exist \n");
+				else{
+					user.isActive = true;
+					user.map(function(foundUser){
+						userID = foundUser._id
+					});
+					res.redirect('/budgetbuddy/home/'+userID);
+				}
+			});
+			console.log("User logged in Successfully!")
 		}
 	});
 });
@@ -71,7 +94,7 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 	//search database for email
 	User.find({email: req.body.email},function (err,docs){
 		//if there is an account with this email output it already exists, else create new user and direct to login page
-		if (docs.length != 0) console.log("An account with this email already exists, please sign in " + docs);
+		if (docs.length != 0) console.log("An account with this email already exists, please sign in ");
 		else {
 			console.log("Creating a new user...");
 			User.create({
@@ -98,10 +121,7 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 			});
 			console.log("User Created Successfully :)");
 		}
-	});
-
-	//search if user exists in database
-	
+	});	
 });
 
 

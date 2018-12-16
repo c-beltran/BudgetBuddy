@@ -22,7 +22,7 @@ body{font-family: 'Roboto', sans-serif;}
 
 <body style="background-color: #E2ECFF;">
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-green">
+  <nav class="navbar navbar-expand-md navbar-dark bg-blue">
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
@@ -40,7 +40,7 @@ body{font-family: 'Roboto', sans-serif;}
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" onclick='openModal()'>Update Budget</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="/" onclick="<% user.isActive = false; %>">Log Out</a>
           </div>
         </li>
       </ul>
@@ -75,7 +75,7 @@ body{font-family: 'Roboto', sans-serif;}
 
     <div class="row">
       <div class="col-xs-1 offset-sm-5" id="button">
-        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')" >Expenses</button>
+        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')">Expenses</button>
       </div>
       <div class="col-xs-1" id="button">
         <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" id="defaultOpen">Goals</button>
@@ -100,15 +100,24 @@ body{font-family: 'Roboto', sans-serif;}
         <br>
         <h3> Expenses </h3>
         <br>
-        <form class="form-inline">
+        <form class="form-inline" method='POST' action='/budgetbuddy/home/<%=user._id%>/expenses'>
           <div class="form-group">
-            <input type="text" class="form-control mb-2 mr-sm-2" id="description" placeholder="Description">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" name="description" placeholder="Description">
           </div>
           <div class="form-group">
-            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" placeholder="0.00" style="width:60px">
+            <input type="amount" class="form-control mb-2 mr-sm-2" id="amount" name="amount" placeholder="0.00" style="width:60px">
           </div>
           <div class="form-group">
-            <input type="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="MM/DD/YYYY">
+
+            <div class="dropdown" style="margin-right: 10px; margin-bottom: 10px;">
+            <select name="categorySelection" required>
+              <option value="">Select a Category</option>
+              <option value="Entertaiment">Entertaiment</option>
+              <option value="Essentials">Essentials</option>
+              <option value="Misc.">Misc.</option>
+            </select>
+          </div>
+
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
@@ -117,15 +126,16 @@ body{font-family: 'Roboto', sans-serif;}
           <tr>
 
             <th> Description </th>
-            <th> Amount </th>
+            <th> Category </th>
             <th> Due Date </th>
+            <th> Amount </th>
           </tr>
           <% for(var i = 0; i < user.expenses.length; i++){%>
           <tr>
-            <td> <%= user.expenses[i].item %> </td>
-            <td> <%= user.expenses[i].price %> </td>
+            <td> <%= user.expenses[i].description %> </td>
             <td> <%= user.expenses[i].category %> </td>
             <td> <%= user.expenses[i].dateOfPurchase %> </td>
+            <td> <%= user.expenses[i].amount %> </td>
           </tr>  
          <% }; %>
         </table>
@@ -159,6 +169,7 @@ body{font-family: 'Roboto', sans-serif;}
           </tr>
           <% for(var i = 0; i < user.goals.length; i++){%>
           <tr>
+            <td><input type="checkbox" name="chkbox[]"></td>
             <td> <%= user.goals[i].description %> </td>
             <td> <%= user.goals[i].amount %> </td>
             <td> <%= user.goals[i].date %> </td>
