@@ -7,9 +7,7 @@ var userSchema = new mongoose.Schema({
 	email: String,
 	password: String,
 	isActive: Boolean,
-	account: {
-		currBudget: Number
-	},
+	currentBudget: Number,
 	expenses: [{
 		description: String,
 		amount: Number,

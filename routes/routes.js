@@ -67,6 +67,45 @@ router.post('/budgetbuddy/home/:id/expenses', function(req, res){
 	});
 });
 
+router.post('/budgetbuddy/home/:id/goals', function(req, res){
+	
+	//creating an object to push to db
+	var newGoal = {
+		description: req.body.description,
+		amount: req.body.amount,
+    	date: req.body.date
+	}
+
+	User.findById(req.params.id, function (err, user) {
+  		if (err) return handleError(err);
+
+  		user.goals.push(newGoal);
+  		user.save(function (err, update) {
+    		if (err) return handleError(err);
+    		res.redirect('back');
+    		// res.send(update);
+    		// res.redirect('/budgetbuddy/home/'+user._id);
+  		});
+	});
+});
+
+router.post('/budgetbuddy/home/:id/updateBudget', function(req, res){
+	//creating an object to push to db
+
+	User.findById(req.params.id, function (err, user) {
+  		if (err) return handleError(err);
+
+  		user.currentBudget = req.body.newBudget;
+  		user.save(function (err, update) {
+    		if (err) return handleError(err);
+			res.redirect('back');
+			console.log(user.currentBudget);
+    		// res.send(update);
+    		// res.redirect('/budgetbuddy/home/'+user._id);
+  		});
+	});
+});
+
 router.post('/budgetbuddy/sign_in', function(req, res){
 	//search if user exists in database
 	User.find({$and: [{ email: req.body.email, password: req.body.password}]}, function (err, docs){
@@ -143,11 +182,6 @@ router.get('/budgetbuddy/sample', function(req, res){
 	});
 });
 
-
-/*
-router.post('/budgetbuddy/home', function(req, res){
-});
-*/
 
 //export file
 module.exports = router;
