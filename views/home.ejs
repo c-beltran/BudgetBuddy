@@ -95,13 +95,13 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Remaining Budget:  <span class="text-danger">$<%= user.currentBudget - totalExpenseAmount%></span></li>
+          <li> Remaining Budget:  <span class="text-danger" style="font-weight: normal;">$<%= user.currentBudget - totalExpenseAmount%></span></li>
           <br>
-          <li> Total Expense Entries: <%= user.expenses.length %></li>
-          <li> Total Amount of Expenses: $<%= totalExpenseAmount %> </li>
+          <li> Total Expense Entries: <span style="font-weight: normal;"><%= user.expenses.length %></span></li>
+          <li> Total Amount of Expenses: <spanstyle="font-weight: normal;">$<%= totalExpenseAmount %></span></li>
           <br>
-          <li> Total Goals Created: <%= user.goals.length %></li>
-          <li> Total Goals Completed: 0</li>
+          <li> Total Goals Created: <span style="font-weight: normal;"><%= user.goals.length %></span></li>
+          <li> Total Goals Completed: <span style="font-weight: normal;">0</span></li>
         </ul>
       </div>
 
