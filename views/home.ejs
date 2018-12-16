@@ -49,15 +49,15 @@ body{font-family: 'Roboto', sans-serif;}
  <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-          <div class="modal-header">
+          <button type="button" class="btn btn-light" data-dismiss="modal" style="width: 15px; margin-left: 230px; padding-left: 5px; padding-right: 10px;">x</button>
+          <div class="modal-header" style="padding: 0px;">
             <h4 class="modal-title">Update Budget</h4>
           </div>
           <div class="modal-body">
             <form class = "form-inline" method= "POST" action= '/budgetbuddy/home/<%=user._id%>/updateBudget'>
               <p>New Budget: <input id="newBudget" name= "newBudget" type="text"></p>
-              <button id="btn" class= "btn btn-default" type = "submit">Save</button>
+              <button id="btn" class= "btn btn-primary" type = "submit">Save</button>
             </form>             
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -70,10 +70,14 @@ body{font-family: 'Roboto', sans-serif;}
   <div class="container">
     <div class="row">
       <div class="col-md-4 offset-md-1" id="left">
-        <br><h4>Total Budget: <%= user.currentBudget %></h4>
+        <br><h4>Total Budget: <span class="text-success">$<%= user.currentBudget %></span></h4>
       </div>
       <div class="col-sm-4 offset-md-2" id="left">
-        <br><h4>Remaining Budget: </h4>
+        <%var totalExpenseAmount = 0;%>
+        <% for(var i = 0; i < user.expenses.length; i++){%>
+            <% totalExpenseAmount = totalExpenseAmount +  user.expenses[i].amount; %>
+        <%}%>
+        <br><h4>Remaining Budget: <span class="text-danger">$<%= user.currentBudget - totalExpenseAmount%></span></h4>
       </div>
     </div>
     <br>
@@ -91,13 +95,13 @@ body{font-family: 'Roboto', sans-serif;}
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Remaining Budget:  </li>
+          <li> Remaining Budget:  <span class="text-danger">$<%= user.currentBudget - totalExpenseAmount%></span></li>
           <br>
           <li> Total Expense Entries: <%= user.expenses.length %></li>
-          <li> Total Amount of Expenses:  </li>
+          <li> Total Amount of Expenses: $<%= totalExpenseAmount %> </li>
           <br>
           <li> Total Goals Created: <%= user.goals.length %></li>
-          <li> Total Goals Completed: </li>
+          <li> Total Goals Completed: 0</li>
         </ul>
       </div>
 
@@ -119,6 +123,7 @@ body{font-family: 'Roboto', sans-serif;}
               <option value="">Select a Category</option>
               <option value="Entertaiment">Entertaiment</option>
               <option value="Essentials">Essentials</option>
+              <option value="Food">Food</option>
               <option value="Misc.">Misc.</option>
             </select>
           </div>

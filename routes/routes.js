@@ -110,7 +110,10 @@ router.post('/budgetbuddy/sign_in', function(req, res){
 	//search if user exists in database
 	User.find({$and: [{ email: req.body.email, password: req.body.password}]}, function (err, docs){
 		if(err) console.log ("Error");
-		else if (docs.length == 0) alert("An account with this email does not exist");
+		else if (docs.length == 0){
+			console.log("An account with this email does not exist");
+			res.redirect('back');
+		} 
 		else{
 			User.find({email: req.body.email}, function (err, user){
 				var userID = "";
@@ -133,7 +136,10 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 	//search database for email
 	User.find({email: req.body.email},function (err,docs){
 		//if there is an account with this email output it already exists, else create new user and direct to login page
-		if (docs.length != 0) console.log("An account with this email already exists, please sign in ");
+		if (docs.length != 0){
+			console.log("An account with this email already exists, please sign in ");
+			res.redirect('back');
+		} 
 		else {
 			console.log("Creating a new user...");
 			User.create({
