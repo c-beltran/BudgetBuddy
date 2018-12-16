@@ -24,9 +24,9 @@ body{font-family: 'Roboto', sans-serif;}
 
   <nav class="navbar navbar-expand-md navbar-dark bg-blue">
     <div class="container">
-      <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
+      <img src="/assets/WalletLogo.png" width="35" height="35" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <a class="navbar-brand" style="color:white"> Welcome <u><%= user.firstName %> </u></a>
+      <a class="navbar-brand" style="color:white; font-size: 30px;"> Welcome <u><%= user.firstName %> </u></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
@@ -65,7 +65,7 @@ body{font-family: 'Roboto', sans-serif;}
 </nav>
 <!-- END OF NAVBAR -->
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding-bottom: 100px;">
 
   <div class="container">
     <div class="row">
@@ -90,22 +90,22 @@ body{font-family: 'Roboto', sans-serif;}
         <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" >Goals</button>
       </div>
       <div class="col-xs-1" id="button">
-        <button type="button" class="btn btn-danger" onClick="openTab(event,'Stats')" >Stats</button>
+        <button type="button" class="btn btn-secondary" onClick="openTab(event,'Stats')" >Coming Soon!</button>
       </div>
     </div>
 
     <div class = "row">
      
       <div class="col-md-4" id="bar">
-        <ul class="vertical">
+        <ul class="vertical" style="line-height: 30px;">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
-          <li> Remaining Budget:  <span class="text-danger" style="font-weight: normal;">$<%= user.currentBudget - totalExpenseAmount%></span></li>
+          <li> Remaining Budget: &nbsp; <span class="text-danger" style="font-weight: normal;">$<%= user.currentBudget - totalExpenseAmount%></span></li>
           <br>
-          <li> Total Expense Entries: <span style="font-weight: normal;"><%= user.expenses.length %></span></li>
-          <li> Total Amount of Expenses: <spanstyle="font-weight: normal;">$<%= totalExpenseAmount %></span></li>
+          <li> Total Expense Entries: &nbsp; <span style="font-weight: normal;"><%= user.expenses.length %></span></li>
+          <li> Total Amount of Expenses: &nbsp; <span style="font-weight: normal;">$<%= totalExpenseAmount %></span></li>
           <br>
-          <li> Total Goals Created: <span style="font-weight: normal;"><%= user.goals.length %></span></li>
-          <li> Total Goals Completed: <span style="font-weight: normal;">0</span></li>
+          <li> Total Goals Created: &nbsp; <span style="font-weight: normal;"><%= user.goals.length %></span></li>
+          <li> Total Goals Completed: &nbsp; <span style="font-weight: normal;">0</span></li>
         </ul>
       </div>
 
@@ -193,7 +193,7 @@ body{font-family: 'Roboto', sans-serif;}
 
  <div class="col-md-7 offset-md-1 tabcontent" id="Stats" style="border-color: green; border-style: solid; border-width: 1px">
         <br>
-        <h3> Stats </h3>
+        <h3> Reports </h3>
         <br>
         <img src="/assets/chart.png">
       </div>
