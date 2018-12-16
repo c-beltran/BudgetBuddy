@@ -1,5 +1,4 @@
 import { model } from "mongoose";
-var modal= document.getElementsById('myModal'); 
 
 function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
@@ -15,14 +14,6 @@ function openTab(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 document.getElementById("defaultOpen").click();
-
-function show(){
-  modal.style.display = "block";
-}
-
-function close(){
-  modal.style.display = "none";
-}
 
 //logic to get date
 var span = document.getElementById("show-date");

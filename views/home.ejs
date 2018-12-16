@@ -40,7 +40,7 @@ body{font-family: 'Roboto', sans-serif;}
             Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button class="dropdown-item" type = "button" onclick = show() >Update Budget</a>
+            <button class="dropdown-item" type = "button" onclick='openModal()'>Update Budget</button>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Log Out</a>
           </div>
@@ -56,7 +56,7 @@ body{font-family: 'Roboto', sans-serif;}
 			<p>New Budget: <input id="newBudget" name= "newBudget" type="text"></p>
 			</form>
       <button id="btn" onclick="save()" type = "submit">Save</button>
-      <button id="btn2" onclick= "cancel()">Cancel</button>
+      <button id="btn2" onclick='closeModal()'>Cancel</button>
 		</div>
 	</div>
 </nav>
@@ -188,6 +188,17 @@ body{font-family: 'Roboto', sans-serif;}
   </div>
      <%});%>
 <!-- END OF MAIN USER PAGE -->
-  <script type="text/javascript" src="/js/home.js"></script>
+<script>
+  var myModal = document.getElementById('myModal');
+
+  function openModal() {
+    myModal.style.display = 'block';
+  }
+
+  function closeModal(){
+    myModal.style.display = "none";
+  }
+</script>
+<script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
