@@ -26,7 +26,7 @@ body{font-family: 'Roboto', sans-serif;}
     <div class="container">
       <img src="/assets/WalletLogo.png" width="30" height="30" style="margin-right: 10px" class="d-inline-block align-top" alt="">
 
-      <a class="navbar-brand" style="color:white"> Welcome <%= user.firstName %> </a>
+      <a class="navbar-brand" style="color:white"> Welcome <u><%= user.firstName %> </u></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
@@ -84,14 +84,18 @@ body{font-family: 'Roboto', sans-serif;}
 
     <div class="row">
       <div class="col-xs-1 offset-sm-5" id="button">
-        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')">Expenses</button>
+        <button type="button" class="btn btn-primary" onClick="openTab(event,'Expenses')" id="defaultOpen">Expenses</button>
       </div>
       <div class="col-xs-1" id="button">
-        <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" id="defaultOpen">Goals</button>
+        <button type="button" class="btn btn-success" onClick="openTab(event,'Goals')" >Goals</button>
+      </div>
+      <div class="col-xs-1" id="button">
+        <button type="button" class="btn btn-danger" onClick="openTab(event,'Stats')" >Stats</button>
       </div>
     </div>
 
     <div class = "row">
+     
       <div class="col-md-4" id="bar">
         <ul class="vertical">
           <li> Today's Date: &nbsp; <span id="show-date" style="font-weight: normal;"></span></li>
@@ -127,14 +131,13 @@ body{font-family: 'Roboto', sans-serif;}
               <option value="Misc.">Misc.</option>
             </select>
           </div>
-
           </div>
           <button type="submit" class="btn btn-primary mb-2">Add</button>
         </form>   
         <br>
+
         <table>
           <tr>
-
             <th> Description </th>
             <th> Category </th>
             <th> Date </th>
@@ -187,9 +190,16 @@ body{font-family: 'Roboto', sans-serif;}
          <% }; %>
         </table>
       </div>
-    </div>
 
+ <div class="col-md-7 offset-md-1 tabcontent" id="Stats" style="border-color: green; border-style: solid; border-width: 1px">
+        <br>
+        <h3> Stats </h3>
+        <br>
+        <img src="/assets/chart.png">
+      </div>
+    </div>
   </div>
+
 <!-- END OF MAIN USER PAGE -->
 <script>
   var myModal = document.getElementById('myModal');

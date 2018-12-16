@@ -164,7 +164,6 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 });
 
 
-
 //all other pages end up here
 router.get("*", function(req, res) {
 	res.send("UNABLE TO FIND THIS ROUTE, SORRY :(");
