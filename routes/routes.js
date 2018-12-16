@@ -73,33 +73,35 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 		//if there is an account with this email output it already exists, else create new user and direct to login page
 		if (docs.length != 0) console.log("An account with this email already exists, please sign in " + docs);
 		else {
+			console.log("Creating a new user...");
 			User.create({
 				firstName: req.body.firstname,
 				lastName: req.body.lastname, 
 				email: req.body.email,
 				password: req.body.password
+			}, function(err, result){
+				if(err) return handleError(err);
+				else{
+					User.find({email: req.body.email}, function (err, user){
+						var userID = "";
+						if(err) console.log ("Error");
+						// else if (user.length == 0) console.log("An account with this email does not exist \n");
+						else{
+							user.isActive = true;
+							user.map(function(foundUser){
+								userID = foundUser._id
+							});
+							res.redirect('/budgetbuddy/home/'+userID);
+						}
+					});
+				}
 			});
-			console.log("user created...")
+			console.log("User Created Successfully :)");
 		}
 	});
 
 	//search if user exists in database
-	User.find({email: req.body.email}, function (err, user){
-		var userID = "";
-		if(err) console.log ("Error");
-		// else if (user.length == 0) console.log("An account with this email does not exist \n");
-		else{
-			user.isActive = true;
-			user.map(function(res){
-				console.log("USER>> ", res._id);
-				userID = res._id
-				console.log("USERIDDDDD___ ", userID);
-			});
-			res.redirect('/budgetbuddy/home/'+userID);
-			// res.render('home', {user: user});
-			// console.log("user found...")
-		}
-	});
+	
 });
 
 
