@@ -61,8 +61,6 @@ router.post('/budgetbuddy/home/:id/expenses', function(req, res){
   		user.save(function (err, update) {
     		if (err) return handleError(err);
     		res.redirect('back');
-    		// res.send(update);
-    		// res.redirect('/budgetbuddy/home/'+user._id);
   		});
 	});
 });
@@ -83,8 +81,6 @@ router.post('/budgetbuddy/home/:id/goals', function(req, res){
   		user.save(function (err, update) {
     		if (err) return handleError(err);
     		res.redirect('back');
-    		// res.send(update);
-    		// res.redirect('/budgetbuddy/home/'+user._id);
   		});
 	});
 });
@@ -99,9 +95,6 @@ router.post('/budgetbuddy/home/:id/updateBudget', function(req, res){
   		user.save(function (err, update) {
     		if (err) return handleError(err);
 			res.redirect('back');
-			console.log(user.currentBudget);
-    		// res.send(update);
-    		// res.redirect('/budgetbuddy/home/'+user._id);
   		});
 	});
 });
@@ -146,7 +139,8 @@ router.post('/budgetbuddy/sign_up', function(req, res){
 				firstName: req.body.firstname,
 				lastName: req.body.lastname, 
 				email: req.body.email,
-				password: req.body.password
+				password: req.body.password,
+				currentBudget: 0,
 			}, function(err, result){
 				if(err) return handleError(err);
 				else{
